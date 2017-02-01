@@ -1,4 +1,4 @@
 name: Public Library of Science
 markdown: kramdown
 
-theme: jekyll-theme-midnight
+theme: jekyll-theme-slate
