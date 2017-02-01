@@ -19,12 +19,9 @@
   <body>
       <div id="header">
         <nav>
-          <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
-          {% if site.show_downloads %}
-            <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
-            <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
-            <li class="title">DOWNLOADS</li>
-          {% endif %}
+          <li class="fork"><a href="{{ 'quickstart.md' | relative_url }}">Quickstart</a></li>
+            <li class="downloads"><a href="{{ 'docs_home.md' | relative_url }}">User Documentation</a></li>
+            <li class="downloads"><a href="{{ 'releases.md' | relative_url }}">releases</a></li>
         </nav>
       </div><!-- end header -->
 
