@@ -11,10 +11,13 @@
   <body>
     <section class="page-header">
       <h1 class="project-name"><a href="{{ 'index.html' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-        <a href="{{ 'quickstart.html' | relative_url }}" class="btn">Quickstart</a>
-        <a href="{{ 'docs_home.md' | relative_url }}" class="btn">User Documentation</a>
-         <a href="{{ 'releases.md' | relative_url }}" class="btn">releases</a>
+      <nav>
+        <a href="{{ 'Quickstart-Guide.html' | relative_url }}" class="btn">Quickstart</a>
+        <a href="{{ 'Docs-Home.html' | relative_url }}" class="btn">User Documentation</a>
+         <a href="{{ 'releases.html' | relative_url }}" class="btn">Releases</a>
+         </nav>
     </section>
 
     <section class="main-content">

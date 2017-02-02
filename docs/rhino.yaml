@@ -1,0 +1,23 @@
+################################ System Config ################################
+
+prettyPrintJson: true
+# enable to use Gson pretty print JSON output
+
+contentRepo:
+  corpus:
+    # Main corpus of articles.
+    address: http://localhost:8081
+    bucket:  corpus
+    # bucket name for the corpus. A bucket with an identical name must be created in the Content Repo.
+    # See the Ingestible-Package-Guide, "Ingesting the article into Rhino".
+
+httpConnectionPool:
+  maxTotal:           100
+  defaultMaxPerRoute: 100
+# HTTP connection management from Rhino (as a client) to other services such as content repo.
+
+# The parameters below would be required to enable comments on articles.
+# userApi:
+#   server:
+#   authorizationAppName:
+#   authorizationPassword:

@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Hank Quinlan, Horrible Cop
+title: Quickstart Guide
+
 ---
+
 ✮ = missing info
 
 # Introduction
@@ -11,7 +13,7 @@ Welcome to the Ambra Quickstart guide, brought to you by PLoS
 
 # Table of Contents:
 
-1. Walkthrough of the Ambra core components
+1. [Walkthrough of the Ambra core components](#walkthrough-of-the-ambra-core-components)
     1. Wombat
     1. Rhino
     1. Content Repo
@@ -76,7 +78,8 @@ Add a journal to the database. For example:
   
 ```sql
 INSERT INTO journal (`journalKey`, `title`) VALUES ("PLOS", "PLOSWorld");
-```
+
+
 
 Note that `journalKey` *must* be identical to the key configured in `journal.yaml` (see below)     
 
@@ -147,6 +150,16 @@ For example to override `email.yaml`:
 1. create a folder with the same directory structure as Wombat, starting from `src/main/webapp/WEB-INF/themes` 
     1. In Wombat this file is located at `src/main/webapp/WEB-INF/themes/root/config/email.yaml`
     1. In your theme, this file should be located at `$YOUR_THEME_PATH/config/email.yaml`
+
+#### Homepage
+
+You can get started by setting your homepage content with a theme override. The homepage body is defined by the theme file `$YOUR_THEME_PATH/ftl/home/body.ftl`. Create a file at this path in your theme and fill it with the HTML or FreeMarker code for your homepage content.
+
+To define new resources to use in your homepage, such as images or CSS files, place the files at the `$YOUR_THEME_PATH/resource` theme path. Any files placed here can be linked at the `resource/` path, relative to your homepage URL. For example, you could place an image named `banner.jpg` in the `resource` path and then link to it from your homepage with
+
+```html
+<img src="resource/banner.jpg" />
+```
 
 ## Compiling Content Repo (crepo)
 

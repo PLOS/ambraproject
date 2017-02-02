@@ -1,0 +1,47 @@
+################################ System Config ################################
+
+server: http://localhost:8123/
+# URL of the server for the service API ("Rhino")
+
+compiledAssetDir: null
+# The local directory to which to write minified JavaScript and CSS assets.
+#
+# If null, JavaScript and CSS code will not be minified.
+# This makes the code human-readable in the browser, a.k.a "dev mode".
+
+httpConnectionPool:
+  maxTotal:           100
+  defaultMaxPerRoute: 100
+# Values for HTTP connection management. Setting these too low can cause serious performance
+# degradation. For details, see org.apache.http.impl.conn.PoolingHttpClientConnectionManager,
+# http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html
+
+# Parameters for Memcached
+cache:
+  memcachedHost: null
+  memcachedPort: null
+  cacheAppPrefix: null
+# Set all to null to disable Memcached. Otherwise, all three are required.
+
+# The parameters below would be required to enable comments on articles.
+# cas:
+#   casUrl:
+#   loginUrl:
+#   logoutUrl:
+
+
+################################### Themes ####################################
+
+themes:
+
+  - key:    # Place the key for your journal here (see journal.yaml)
+    path:   # Place the location you chose for your theme directory here (see "Setting up a theme directory")
+    parent: .Desktop
+
+
+  # ========================================
+
+sites:
+
+  - key:   Desktop
+    theme: Desktop # Must match a themes key, defined above

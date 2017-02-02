@@ -1,0 +1,10 @@
+journalKey: null
+# Specify the journal key for this site. The journal key is a value associated with articles (in the service API) that
+# describes which journals the article was published or cross-published in. This controls, among other things, which
+# articles may be viewed on this site.
+#
+# This configuration value is mandatory and must be overridden with a non-null string in order for the site to work.
+
+journalName: null
+# The full, human-readable name of the journal.
+# This configuration value is mandatory and must be overridden with a non-null string in order for the site to work.
