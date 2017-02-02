@@ -10,7 +10,7 @@ title: User Documentation
       {% if p.navigation_weight %}
        
         <h3>
-          <a href="{{ p.url }}" {% if p.url == page.url %}class="active"{% endif %}>
+          <a href="{{ p.url | relative_url }}" {% if p.url == page.url %}class="active"{% endif %}>
             {{ p.title }}
           </a>
           </h3>
