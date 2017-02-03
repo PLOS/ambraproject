@@ -124,7 +124,7 @@ The eISSN defined in your manuscript XML *must match* a journal eISSN defined in
 Example:
 
 ```xml
-    <issn pub-type="epub">1932-6203</issn> 
+<issn pub-type="epub">1932-6203</issn> 
 ```
 
 ### JATS deviations
