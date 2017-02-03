@@ -1,3 +1,8 @@
+---
+layout: default
+title: MIT License
+---
+
 Copyright (c) 2017 Public Library of Science
 
 Permission is hereby granted, free of charge, to any person obtaining a
