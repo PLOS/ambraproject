@@ -36,7 +36,7 @@ Welcome to the Ambra Quickstart guide, brought to you by PLOS
 
 ## Wombat
 
-wombat is the frontend component of our service-oriented publishing platform. Wombat is a web application that pulls most of its article data from Rhino (and the rest from Solr), and displays it using journal-specific freemarker templates. Since wombat gets its data from rhino and solr, you will need both of those servers running first.
+Wombat is the frontend component of our service-oriented publishing platform. Wombat is a web application that pulls most of its article data from Rhino, and displays it using journal-specific freemarker templates. Since Wombat gets its data from Rhino, you will need a Rhino server running first.
 
 ## Rhino
 
@@ -86,7 +86,7 @@ INSERT INTO journal (`journalKey`, `title`) VALUES ("PLOS", "PLOSWorld");
 ```
 
 
-Note that `journalKey` *must* be identical to the key configured in `journal.yaml` (see below)     
+Note that `journalKey` *must* be identical to the key configured in `journal.yaml` ([see below](#themes-configuration))
 
 #### crepo database
 
@@ -127,7 +127,7 @@ Compile Rhino with maven:
 ## Compiling Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields ([example](#https://plos.github.io/ambraproject/example/context.xml))
+`wombat.yaml` has some required fields ([example](#https://plos.github.io/ambraproject/example/context.xml)).
 
 Clone the [Wombat github project](https://github.com/PLOS/wombat.git) into your ambra folder. This will be your Wombat working directory.
 
@@ -171,7 +171,7 @@ Themes requires a file named `journal.yaml` placed in the theme config directory
 
 Using the example above, this directory would be `/var/themes/config/`.
  
-There are two required fields - `journalKey` and `journalName`. see the example `journal.yaml` file included in this project.
+There are two required fields - `journalKey` and `journalName` ([example](#https://plos.github.io/ambraproject/example/journal.yaml)).
 
 
 ### Theme Overrides
