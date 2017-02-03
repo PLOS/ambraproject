@@ -21,7 +21,7 @@ For instructions for setting up the Ambra stack, please see the Quickstart-Guide
         1. [eISSN](#eissn)
         1. [JATS deviations](#jats-deviations)
     1. [Printable](#printable)
-    1. [Article Assets](#article-assets-figures-tables-an-supplementary-material)
+    1. [Article Assets](#article-assets-figures-tables-and-supplementary-material)
         1. [Article Asset Types](#article-asset-types)
 1. [Ingesting an article into Rhino](#ingesting-an-article-into-rhino)
     1. [Creating a Content Repo bucket](#creating-a-content-repo-bucket)
@@ -122,6 +122,7 @@ There are standard tags to use for the abstract, author list, citations, etc. Pl
 The eISSN defined in your manuscript XML *must match* a journal eISSN defined in your Ambra database.
 
 Example:
+
  ```xml
  <issn pub-type="epub">1932-6203</issn> 
  ```
