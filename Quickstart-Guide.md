@@ -10,7 +10,7 @@ navigation_weight: 1
 
 # Introduction
 
-Welcome to the Ambra Quickstart guide, brought to you by PLoS
+Welcome to the Ambra Quickstart guide, brought to you by PLOS
 
 
 # Table of Contents:
@@ -206,6 +206,6 @@ Go to `http://localhost:<PORT>` to view the root page for each application
 
 ## Ingesting an article
 
-PLoS provides some sample article package zip files for ingestion, located [here](✮).
+PLOS provides some sample article package zip files for ingestion, located [here](✮).
 
 You can ingest and publish an article package using the Rhino Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the Ingestible-Package-Guide. 
