@@ -22,3 +22,6 @@ To list the new page on the documentation page, add the following:
 The `navigation_weight` represents the position of the document in the document list page.
 
 When done, create a new branch and submit a pull request.
+
+Please contact us at dev@ambraproject.org with any questions, comments, or concerns.
+Please use [Github Issues](https://github.com/PLOS/ambraproject/issues) to report any problems, or submit a pull request.
