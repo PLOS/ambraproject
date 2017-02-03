@@ -110,13 +110,14 @@ Example:
   sudo mkdir /etc/ambra                     # configuration directory
 ```
   
-  Rhino requires two configuration files placed in configuration directory. 
-  1. `rhino.yaml` 
-  1. `context.xml`
+Rhino requires two configuration files placed in configuration directory.
   
-  The files listed above have some required fields - see the example files included in this project.
+1. `rhino.yaml` ([example](#https://plos.github.io/ambraproject/example/wombat.yaml))
+1. `context.xml` ([example](#https://plos.github.io/ambraproject/example/context.xml))
   
-  Clone the [Rhino github project](https://github.com/PLOS/rhino.git) into your ambra folder. This will be your Rhino working directory.
+The files listed above have some required fields - see the example files included in this project.
+  
+Clone the [Rhino github project](https://github.com/PLOS/rhino.git) into your ambra folder. This will be your Rhino working directory.
   
 ## Compiling Rhino
 Compile Rhino with maven:
@@ -126,7 +127,7 @@ Compile Rhino with maven:
 ## Compiling Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields - see the example `wombat.yaml` file included in this project. 
+`wombat.yaml` has some required fields ([example](#https://plos.github.io/ambraproject/example/context.xml))
 
 Clone the [Wombat github project](https://github.com/PLOS/wombat.git) into your ambra folder. This will be your Wombat working directory.
 
