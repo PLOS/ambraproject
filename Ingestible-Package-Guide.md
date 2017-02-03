@@ -12,20 +12,22 @@ For instructions for setting up the Ambra stack, please see the Quickstart-Guide
 
 # Table of Contents:
 
-1. The JATS standard
-1. The article package
-    1. manifest.xml
-    1. manuscript.xml
-        1. eISSN
-        1. JATS deviations
-    1. printable
-    1. graphics
-        1. required sizes
-1. Ingesting an article into Rhino
-    1. Creating a Content Repo bucket
-    1. Uploading the article
-    1. Adding an article revision
-1. Viewing the article
+1. [The JATS standard](#the-jats-standard)
+1. [The article package](#the-article-package)
+    1. [manifest.xml](#manifestxml)
+        1. [Manifest XML Example](#manifest-xml-example)
+        1. [Required Tags](#required-tags)
+    1. [manuscript.xml](#manuscriptxml)
+        1. [eISSN](#eissn)
+        1. [JATS deviations](#jats-deviations)
+    1. [Printable](#printable)
+    1. [Article Assets](#article-assets-figures-tables-an-supplementary-material)
+        1. [Article Asset Types](#article-asset-types)
+1. [Ingesting an article into Rhino](#ingesting-an-article-into-rhino)
+    1. [Creating a Content Repo bucket](#creating-a-content-repo-bucket)
+    1. [Uploading the article](#uploading-an-article)
+    1. [Adding an article revision](#adding-an-article-revision)
+1. [Viewing the article](#viewing-the-article)
         
 # The JATS standard
 
@@ -138,7 +140,7 @@ PLOS is actively working to resolve these issues.
 
 The `Printable` is a print-ready version of your article, generally a PDF.
 
-## Article Assets (figures, tables, an supplementary material) 
+## Article Assets (figures, tables, and supplementary material) 
 
 An article can have any number of article assets included, as long as they are defined in the manuscript AND the manifest.
 
