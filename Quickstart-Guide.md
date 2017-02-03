@@ -135,7 +135,7 @@ Compile Wombat with maven:
 1. navigate to the wombat working directory - `cd ~/projects/wombat`
 2. `mvn clean install`
 
-## Compiling Content Repo (crepo)
+## Compiling Content Repo
 
 1. Clone the [crepo github project](https://github.com/PLOS/content-repo.git) into your projects folder. This will be your crepo working directory.
 
