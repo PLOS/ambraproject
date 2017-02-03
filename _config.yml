@@ -1,3 +1,4 @@
 name: Public Library of Science
+site.title: Ambra Project
 markdown: kramdown
 theme: jekyll-theme-cayman

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ingestible Package Guide
-navigation_weight: 0
+navigation_weight: 2
 
 ---
 
