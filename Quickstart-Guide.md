@@ -16,20 +16,21 @@ Welcome to the Ambra Quickstart guide, brought to you by PLOS
 # Table of Contents:
 
 1. [Walkthrough of the Ambra core components](#walkthrough-of-the-ambra-core-components)
-    1. Wombat
-    1. Rhino
-    1. Content Repo
-1. Compiling the components
-    1. System requirements
-    1. Setting up the databases
-    1. Compiling Rhino
-    1. Compiling Wombat
-    1. Compiling Content Repo
-1. Setting up a theme directory
-    1. Theme overrides 
-1. Deploying the artifacts to Tomcat
-    1. Viewing the "hello world" page for each component
-1. Ingesting an article
+    1. [Wombat](#wombat)
+    1. [Rhino](#rhino)
+    1. [Content Repo](#content-repo-crepo)
+1. [Compiling the components](#compiling-the-components)
+    1. [System requirements](#system-requirements)
+    1. [Setting up the databases](#setting-up-the-databases)
+    1. [Compiling Rhino](#compiling-rhino)
+    1. [Compiling Wombat](#compiling-wombat)
+    1. [Compiling Content Repo](#compiling-content-repo)
+1. [Setting up a theme directory](#setting-up-a-theme-directory)
+    1. [Themes Configuration](#themes-configuration)
+    1. [Theme Overrides](#theme-overrides)
+1. [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat)
+    1. [Viewing the "hello world" page for each component](#viewing-the-hello-world-page-for-each-component)
+1. [Ingesting an article](#ingesting-an-article)
 
 # Walkthrough of the Ambra core components
 
@@ -60,6 +61,8 @@ The Content Repo is a append-only repository of article assets, including the ma
 The Java 8 development kit (JDK8) is required to develop and compile the Ambra webapp.
 ✮ When we figure out the WAR distribution plan add either "go here to get the WARs" or "be aware you'll have to compile it yourself".
 
+## Setting Up the Databases
+
 ### MySQL
 Ambra requires a running MySQL server. Ambra should be compatible with the latest version of MySQL.
 
@@ -80,7 +83,7 @@ Add a journal to the database. For example:
   
 ```sql
 INSERT INTO journal (`journalKey`, `title`) VALUES ("PLOS", "PLOSWorld");
-
+```
 
 
 Note that `journalKey` *must* be identical to the key configured in `journal.yaml` (see below)     
@@ -101,19 +104,20 @@ Maven is required to compile Ambra.
 You will need to create a home directory for the Ambra project, a configuration directory, and a datastore for crepo.
 
 Example:
-  ```bash
+```bash
   mkdir $HOME/ambra                         # home for the ambra project
   mkdir $HOME/ambra/datastores/crepostore   # crepo datastore directory
   sudo mkdir /etc/ambra                     # configuration directory
-  ```
+```
   
-  Rhino requires two configuration files placed in configuration directory. 
-  1. `rhino.yaml` 
-  1. `context.xml`
+Rhino requires two configuration files placed in configuration directory.
   
-  The files listed above have some required fields - see the example files included in this project.
+1. `rhino.yaml` ([example](#https://plos.github.io/ambraproject/example/wombat.yaml))
+1. `context.xml` ([example](#https://plos.github.io/ambraproject/example/context.xml))
   
-  Clone the [Rhino github project](https://github.com/PLOS/rhino.git) into your ambra folder. This will be your Rhino working directory.
+The files listed above have some required fields - see the example files included in this project.
+  
+Clone the [Rhino github project](https://github.com/PLOS/rhino.git) into your ambra folder. This will be your Rhino working directory.
   
 ## Compiling Rhino
 Compile Rhino with maven:
@@ -123,13 +127,39 @@ Compile Rhino with maven:
 ## Compiling Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields - see the example `wombat.yaml` file included in this project. 
+`wombat.yaml` has some required fields ([example](#https://plos.github.io/ambraproject/example/context.xml))
 
 Clone the [Wombat github project](https://github.com/PLOS/wombat.git) into your ambra folder. This will be your Wombat working directory.
 
 Compile Wombat with maven:
 1. navigate to the wombat working directory - `cd ~/projects/wombat`
 2. `mvn clean install`
+
+## Compiling Content Repo (crepo)
+
+1. Clone the [crepo github project](https://github.com/PLOS/content-repo.git) into your projects folder. This will be your crepo working directory.
+
+2. Make sure to configure `context.xml` in your configuration directory to use the content repo. Example: 
+
+```xml
+  <Resource name="jdbc/repoDB"
+              auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              validationQuery="SELECT 1"
+              testOnBorrow="true"
+              driverClassName="com.mysql.jdbc.Driver"
+              username="root"
+              password=""
+              url="jdbc:mysql://localhost:3306/repo"/>
+              <!-- These credentials and url should match your MySQL server -->
+```
+
+Also See the example `context.xml` file included in this project.
+
+Compile crepo with maven:
+1. navigate to the crepo working directory - `cd ~/projects/crepo`
+1. `mvn clean install`
 
 ## Setting up a theme directory
 
@@ -163,35 +193,10 @@ To define new resources to use in your homepage, such as images or CSS files, pl
 <img src="resource/banner.jpg" />
 ```
 
-## Compiling Content Repo (crepo)
-
-1. Clone the [crepo github project](https://github.com/PLOS/content-repo.git) into your projects folder. This will be your crepo working directory.
-
-2. Make sure to configure `context.xml` in your configuration directory to use the content repo. Example: 
-
-```xml
-  <Resource name="jdbc/repoDB"
-              auth="Container"
-              type="javax.sql.DataSource"
-              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-              validationQuery="SELECT 1"
-              testOnBorrow="true"
-              driverClassName="com.mysql.jdbc.Driver"
-              username="root"
-              password=""
-              url="jdbc:mysql://localhost:3306/repo"/>
-              <!-- These credentials and url should match your MySQL server -->
-```
-
-Also See the example `context.xml` file included in this project.
-
-Compile crepo with maven:
-1. navigate to the crepo working directory - `cd ~/projects/crepo`
-1. `mvn clean install`
-
 ## Deploying the artifacts to Tomcat
 
 Use maven to deploy each component. This is where you will set the application port as well as define the configuration directory:
+
 1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
 1. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
 1. Crepo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
@@ -208,4 +213,4 @@ Go to `http://localhost:<PORT>` to view the root page for each application
 
 PLOS provides some sample article package zip files for ingestion, located [here](✮).
 
-You can ingest and publish an article package using the Rhino Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the Ingestible-Package-Guide. 
+You can ingest and publish an article package using the Rhino Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the [Ingestible-Package-Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html). 
