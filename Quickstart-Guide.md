@@ -122,40 +122,23 @@ Clone the [Rhino github project](https://github.com/PLOS/rhino.git) into your am
 ## Compiling Rhino
 Compile Rhino with maven:
 1. navigate to the rhino working directory - `cd ~/projects/rhino`
-2. `mvn clean install`
+1. `mvn clean install`
  
 ## Compiling Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields ([example](#https://plos.github.io/ambraproject/example/context.xml)).
+`wombat.yaml` has some required fields - see the [example](#https://plos.github.io/ambraproject/example/context.xml) file.
 
 Clone the [Wombat github project](https://github.com/PLOS/wombat.git) into your ambra folder. This will be your Wombat working directory.
 
 Compile Wombat with maven:
 1. navigate to the wombat working directory - `cd ~/projects/wombat`
-2. `mvn clean install`
+1. `mvn clean install`
 
 ## Compiling Content Repo
 
 1. Clone the [crepo github project](https://github.com/PLOS/content-repo.git) into your projects folder. This will be your crepo working directory.
-
-2. Make sure to configure `context.xml` in your configuration directory to use the content repo. Example: 
-
-```xml
-  <Resource name="jdbc/repoDB"
-              auth="Container"
-              type="javax.sql.DataSource"
-              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-              validationQuery="SELECT 1"
-              testOnBorrow="true"
-              driverClassName="com.mysql.jdbc.Driver"
-              username="root"
-              password=""
-              url="jdbc:mysql://localhost:3306/repo"/>
-              <!-- These credentials and url should match your MySQL server -->
-```
-
-Also See the example `context.xml` file included in this project.
+1. Make sure to configure `context.xml` in your configuration directory to use the content repo. See the [example](#https://plos.github.io/ambraproject/example/context.xml) file. 
 
 Compile crepo with maven:
 1. navigate to the crepo working directory - `cd ~/projects/crepo`
