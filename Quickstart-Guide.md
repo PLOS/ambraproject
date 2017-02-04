@@ -6,8 +6,6 @@ navigation_weight: 1
 
 ---
 
-✮ = missing info
-
 # Introduction
 
 Welcome to the Ambra Quickstart guide, brought to you by PLOS
@@ -59,7 +57,6 @@ The Content Repo is a append-only repository of article assets, including the ma
 
 ### Java 8
 The Java 8 development kit (JDK8) is required to develop and compile the Ambra webapp.
-✮ When we figure out the WAR distribution plan add either "go here to get the WARs" or "be aware you'll have to compile it yourself".
 
 ## Setting Up the Databases
 
@@ -194,6 +191,6 @@ Go to `http://localhost:<PORT>` to view the root page for each application
 
 ## Ingesting an article
 
-PLOS provides some sample article package zip files for ingestion, located [here](✮).
+PLOS provides some sample article package zip files for ingestion, located [here](http://www.ambraproject.org/downloads).
 
 You can ingest and publish an article package using the Rhino Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the [Ingestible-Package-Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html). 
