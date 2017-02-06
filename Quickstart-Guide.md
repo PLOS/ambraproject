@@ -17,7 +17,7 @@ Welcome to the Ambra Quickstart guide, brought to you by PLOS
     1. [Wombat](#wombat)
     1. [Rhino](#rhino)
     1. [Content Repo](#content-repo-crepo)
-1. [Deploying pre-built WAR files](#deploying-prebuilt-war-files)
+1. [Deploying pre-built WAR files](#deploying-pre-built-war-files)
 1. [Compiling the components](#compiling-the-components)
     1. [System requirements](#system-requirements)
     1. [Setting up the databases](#setting-up-the-databases)
