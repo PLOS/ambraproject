@@ -47,7 +47,7 @@ The Content Repo is a append-only repository of article assets, including the ma
 
 # Deploying pre-built WAR files
 
-You can set up and run ambra without compiling any code. Simply use the war files provided [here](http://www.ambraproject.org/downloads), and follow the instructions for [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).  
+You can set up and run ambra without compiling any code. Simply use the war files provided [here](https://plos.github.io/ambraproject/releases.html), and follow the instructions for [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).  
 
 # Compiling the components
 
