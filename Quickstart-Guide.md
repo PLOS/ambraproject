@@ -107,11 +107,14 @@ mysql -uroot -e "CREATE DATABASE repo;"
 
 You will need to create a configuration directory and a directory to hold files in CRepo's datastore.
 
-Example:
+On a toy system, a recommended setup is:
 ```bash
-  mkdir $HOME/ambra/datastores/crepostore   # crepo datastore directory
-  sudo mkdir /etc/ambra                     # configuration directory
+  mkdir $HOME/ambra
+  mkdir $HOME/ambra/crepo_datastore  # CRepo datastore directory
+  mkdir $HOME/ambra/config           # configuration directory
 ```
+
+On a production system, `/etc/ambra` is recommended for the configuration directory.
 
 ### Configuration files
 
@@ -135,15 +138,19 @@ In addition to the Rhino configuration, the `context.xml` in your configuration 
 
 ## Setting up a theme directory
 
-Create a new directory to house your site's theme configuration. For example, `/var/themes`.
+Create a new directory to house your site's theme configuration. If you are using a `$HOME/ambra` directory as in the example above, then do
+```bash
+  mkdir -p $HOME/ambra/themes/my_theme
+```
+You may substitute your publication's name for `my_theme`.
+
+On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
 
 ### Themes Configuration
 
-Themes requires a file named `journal.yaml` placed in the theme config directory.
+Themes requires a file named `journal.yaml` placed in the `config` directory at your theme path. (For example, `$HOME/ambra/themes/my_theme/config/journal.yaml`.)
 
-Using the example above, this directory would be `/var/themes/config/`.
-
-There are two required fields: `journalKey` and `journalName` ([example](#https://plos.github.io/ambraproject/example/journal.yaml)).
+There are two required fields: `journalKey` and `journalName`. [See an example.](#https://plos.github.io/ambraproject/example/journal.yaml)
 
 
 ### Theme Overrides
@@ -152,8 +159,8 @@ Every Freemarker Template, configuration, and resource file in Wombat can be ove
 
 For example to override `email.yaml`:
 1. create a directory with the same directory structure as Wombat, starting from `src/main/webapp/WEB-INF/themes`
-    1. In Wombat this file is located at `src/main/webapp/WEB-INF/themes/root/config/email.yaml`
-    2. In your theme, this file should be located at `$YOUR_THEME_PATH/config/email.yaml`
+    1. In Wombat, this file is located at `src/main/webapp/WEB-INF/themes/root/config/email.yaml`
+    2. If your theme directory is `my_theme`, the override is located at `my_theme/config/email.yaml`
 
 #### Homepage
 
