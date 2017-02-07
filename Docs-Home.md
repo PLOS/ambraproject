@@ -4,8 +4,6 @@ title: User Documentation
 
 ---
 <p>
- We’ll cover topics such as getting your site up and running, customising your site and ingesting article packages. Ambra Project is under continuous development we welcome your input at PUT IN EMAIL.
-	
 </p>
 
 <div class="doclist">
