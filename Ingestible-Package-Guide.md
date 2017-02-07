@@ -158,7 +158,7 @@ Each included article asset requires at least one resized copy. The copy, or cop
 
 #### Figure and Table Size Types
 
-1. `original` - The original image in its maximum resolution.
+1. `original` - The original image at its maximum resolution.
 2. `large` - Used in the stand-alone image view and the image viewer. Should be able to fit on a standard computer screen.
 3. `medium` - Used on the homepage. Should be less than half the size of the large version.
 4. `small` - Used in issues and the current issue on the homepage. Should be less than half the size of the medium version.
