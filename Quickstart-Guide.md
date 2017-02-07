@@ -91,10 +91,12 @@ mysql -h 127.0.0.1 -P 3306 -uroot -p ambra < ambra-schema.sql
 Add a journal to the database. For example:
 
 ```sql
-INSERT INTO journal (`journalKey`, `title`) VALUES ("PLOS", "PLOSWorld");
+INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My Journal", "0000-0000");
 ```
 
-Note that `journalKey` *must* be identical to the key configured in `journal.yaml` ([see below](#themes-configuration))
+* The field `journalKey` is an identifier used in config files. It must match the key configured in `journal.yaml` ([see below](#themes-configuration)).
+* The field `title` is the reader-facing display form of the title.
+* The field `eissn` is the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). It must match the e-ISSN for articles ingested into the system (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). On a toy system, use a dummy value such as `0000-0000`.
 
 #### Content Repo database
 
@@ -194,4 +196,4 @@ Go to `http://localhost:<PORT>` to view the root page for each application.
 
 PLOS provides some sample article package zip files for ingestion, located [here](http://www.ambraproject.org/downloads/article_examples).
 
-You can ingest and publish an article package using Rhino's Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the [Ingestible-Package-Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html).
+You can ingest and publish an article package using Rhino's Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html).
