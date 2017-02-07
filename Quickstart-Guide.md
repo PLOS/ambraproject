@@ -17,13 +17,12 @@ This Quickstart guide provides instructions for setting up a new instance of the
     1. [Wombat](#wombat)
     2. [Rhino](#rhino)
     3. [Content Repo](#content-repo-crepo)
-2. [Pre-built WAR files](#pre-built-war-files)
-3. [Compiling the components](#compiling-the-components)
-    1. [System requirements](#system-requirements)
+2. [Obtaining the binaries](#obtaining-the-binaries)
+3. [System setup](#system-setup)
+    1. [Requirements](#requirements)
     2. [Setting up the databases](#setting-up-the-databases)
-    3. [Compiling Rhino](#compiling-rhino)
-    4. [Compiling Wombat](#compiling-wombat)
-    5. [Compiling Content Repo](#compiling-content-repo)
+    3. [Directories](#directories)
+    4. [Configuration files](#configuration-files)
 4. [Setting up a theme directory](#setting-up-a-theme-directory)
     1. [Themes Configuration](#themes-configuration)
     2. [Theme Overrides](#theme-overrides)
@@ -45,23 +44,31 @@ Rhino is the back-end service for ingesting and storing article content and meta
 
 The Content Repo is an append-only repository of article assets, including the manuscript XML and all images.
 
-# Pre-built WAR files
+# Obtaining the binaries
 
-You can set up and run Ambra without compiling any code. Simply use the `.war` files provided on our [Releases page](https://plos.github.io/ambraproject/releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
+If you have Tomcat installed on your system, you can set up and run Ambra without compiling any code. Download `.war` files from our [Releases page](https://plos.github.io/ambraproject/releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
 
-# Compiling the components
+You can also check out the source code and compile the `.war` artifacts for youself. The source code repositories are located at:
 
-## System requirements
+* [Wombat](https://github.com/PLOS/wombat.git)
+* [Rhino](https://github.com/PLOS/rhino.git)
+* [Content Repo](https://github.com/PLOS/content-repo.git)
+
+Maven is required to compile components of the Ambra stack. Each component can be compiled by executing `mvn install` from the checked-out directory.
+
+# System setup
+
+## Requirements
 
 ### Overview
 1. Java 8
-2. Mysql
-3. Maven
-4. Tomcat
-5. Solr
+2. MySQL
+3. Tomcat
+4. Solr (optional)
+5. Maven (optional)
 
 ### Java 8
-The Java 8 development kit (JDK8) is required to develop and compile the Ambra webapp.
+Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
 
 ## Setting Up the Databases
 
@@ -75,7 +82,7 @@ mysql -uroot -e "DROP DATABASE IF EXISTS ambra;"
 mysql -uroot -e "CREATE DATABASE ambra;"
 ```
 
-Import the ambra schema, `ambra-schema.sql` into the ambra database:
+Import the ambra schema, `ambra-schema.sql` into the `ambra` database. For example:
 
 ```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -p ambra < ambra-schema.sql
@@ -87,7 +94,6 @@ Add a journal to the database. For example:
 INSERT INTO journal (`journalKey`, `title`) VALUES ("PLOS", "PLOSWorld");
 ```
 
-
 Note that `journalKey` *must* be identical to the key configured in `journal.yaml` ([see below](#themes-configuration))
 
 #### Content Repo database
@@ -97,20 +103,19 @@ mysql -uroot -e "DROP DATABASE IF EXISTS repo;"
 mysql -uroot -e "CREATE DATABASE repo;"
 ```
 
-### Maven
-
-Maven is required to compile Ambra.
-
 ### Directories
 
-You will need to create a home directory for the Ambra project, a configuration directory, and a datastore for CRepo.
+You will need to create a configuration directory and a directory to hold files in CRepo's datastore.
 
 Example:
 ```bash
-  mkdir $HOME/ambra                         # home for the ambra project
   mkdir $HOME/ambra/datastores/crepostore   # crepo datastore directory
   sudo mkdir /etc/ambra                     # configuration directory
 ```
+
+### Configuration files
+
+#### Rhino
 
 Rhino requires two configuration files placed in configuration directory.
 
@@ -119,32 +124,14 @@ Rhino requires two configuration files placed in configuration directory.
 
 The files listed above have some required fields - see the example files included in this project.
 
-Clone the [Rhino GitHub project](https://github.com/PLOS/rhino.git). This will be your Rhino working directory.
-
-## Compiling Rhino
-Compile Rhino with Maven:
-1. Navigate to the Rhino working directory - `cd ~/projects/rhino`
-2. `mvn clean install`
-
-## Compiling Wombat
+#### Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
 `wombat.yaml` has some required fields - see the [example](#https://plos.github.io/ambraproject/example/context.xml) file.
 
-Clone the [Wombat GitHub project](https://github.com/PLOS/wombat.git). This will be your Wombat working directory.
+#### Content Repo
 
-Compile Wombat with Maven:
-1. Navigate to the Wombat working directory - `cd ~/projects/wombat`
-2. `mvn clean install`
-
-## Compiling Content Repo
-
-1. Clone the [Content Repo GitHub project](https://github.com/PLOS/content-repo.git). This will be your CRepo working directory.
-2. Make sure to configure `context.xml` in your configuration directory to use the content repo. See the [example](#https://plos.github.io/ambraproject/example/context.xml) file.
-
-Compile CRepo with Maven:
-1. Navigate to the CRepo working directory - `cd ~/projects/crepo`
-2. `mvn clean install`
+In addition to the Rhino configuration, the `context.xml` in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store. See the [example](#https://plos.github.io/ambraproject/example/context.xml) file.
 
 ## Setting up a theme directory
 
