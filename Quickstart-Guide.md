@@ -184,11 +184,11 @@ You may also run each component from Maven. This is where you will set the appli
 
 ### Viewing the "hello world" page for each component
 
-Go to `http://localhost:<PORT>` to view the root page for each application
+Go to `http://localhost:<PORT>` to view the root page for each application.
 
 1. Rhino: Swagger API interface
-2. crepo: Swagger API interface
-3. Wombat: debug or root page.
+2. CRepo: Swagger API interface
+3. Wombat: Debug or root page
 
 ## Ingesting an article
 
