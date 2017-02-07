@@ -24,8 +24,9 @@ This Quickstart guide provides instructions for setting up a new instance of the
     3. [Directories](#directories)
     4. [Configuration files](#configuration-files)
 4. [Setting up a theme directory](#setting-up-a-theme-directory)
-    1. [Themes Configuration](#themes-configuration)
-    2. [Theme Overrides](#theme-overrides)
+    1. [Theme Overrides](#theme-overrides)
+    2. [Journal Configuration](#journal-configuration)
+    3. [Homepage Customization](#homepage-customization)
 5. [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat)
     1. [Viewing the "hello world" page for each component](#viewing-the-hello-world-page-for-each-component)
 6. [Ingesting an article](#ingesting-an-article)
@@ -148,27 +149,41 @@ You may substitute your publication's name for `my_theme`.
 
 On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
 
-### Themes Configuration
+### Theme Overrides
 
-Themes requires a file named `journal.yaml` placed in the `config` directory at your theme path. (For example, `$HOME/ambra/themes/my_theme/config/journal.yaml`.)
+Every Freemarker Template, configuration, and resource file in Wombat can be overridden in your theme. This allows you to customize your site.
+
+Wombat's built-in themes are located in its source code at
+
+* `src/main/webapp/WEB-INF/themes/root`
+* `src/main/webapp/WEB-INF/themes/desktop`
+* `src/main/webapp/WEB-INF/themes/mobile`
+
+You may [explore these directories](https://github.com/PLOS/wombat/tree/master/src/main/webapp/WEB-INF/themes) to find templates and configuration files that you can override. Two examples follow.
+
+#### Journal Configuration
+
+A theme requires a file named `journal.yaml` placed in the `config` directory at the theme path. For example:
+
+```$HOME/ambra/themes/my_theme/config/journal.yaml```
+
+This overrides the file found in Wombat's source code at
+
+```src/main/webapp/WEB-INF/themes/root/config/journal.yaml```
 
 There are two required fields: `journalKey` and `journalName`. [See an example.](#https://plos.github.io/ambraproject/example/journal.yaml)
 
+Other config files control the application's behavior in other ways; `journal.yaml` is the only mandatory override. They are documented by the root files in Wombat's source code, which you may override individually.
 
-### Theme Overrides
+#### Homepage Customization
 
-Every Freemarker Template, configuration, and resource file in Wombat can be overridden in themes. This allows you to customize your site.
+You can get started by setting your homepage content with a theme override. The homepage body is defined by the theme file at `ftl/home/body.ftl`. Create a file at this path in your theme; for example:
 
-For example to override `email.yaml`:
-1. create a directory with the same directory structure as Wombat, starting from `src/main/webapp/WEB-INF/themes`
-    1. In Wombat, this file is located at `src/main/webapp/WEB-INF/themes/root/config/email.yaml`
-    2. If your theme directory is `my_theme`, the override is located at `my_theme/config/email.yaml`
+```$HOME/ambra/themes/my_theme/ftl/home/body.ftl```
 
-#### Homepage
+Edit it to fill in the HTML or FreeMarker code for your homepage content.
 
-You can get started by setting your homepage content with a theme override. The homepage body is defined by the theme file `$YOUR_THEME_PATH/ftl/home/body.ftl`. Create a file at this path in your theme and fill it with the HTML or FreeMarker code for your homepage content.
-
-To define new resources to use in your homepage, such as images or CSS files, place the files at the `$YOUR_THEME_PATH/resource` theme path. Any files placed here can be linked at the `resource/` path, relative to your homepage URL. For example, you could place an image named `banner.jpg` in the `resource` path and then link to it from your homepage with
+To define new resources to use in your homepage, such as images or CSS files, place the files at the `resource` theme path (e.g., `$HOME/ambra/themes/my_theme/resource/`). Any files placed here can be linked at the `resource/` path, relative to your homepage URL. For example, you could create an image named `$HOME/ambra/themes/my_theme/resource/banner.jpg` and then link to it from your homepage with
 
 ```html
 <img src="resource/banner.jpg" />
