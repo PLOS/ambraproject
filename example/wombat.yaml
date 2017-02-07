@@ -34,7 +34,7 @@ cache:
 
 themes:
 
-  - key:    # Place the key for your journal here (see journal.yaml)
+  - key:    # Place an identifier for the theme here
     path:   # Place the location you chose for your theme directory here (see "Setting up a theme directory")
     parent: .Desktop
 
