@@ -15,21 +15,21 @@ Welcome to the Ambra Quickstart guide, brought to you by PLOS
 
 1. [Walkthrough of the Ambra core components](#walkthrough-of-the-ambra-core-components)
     1. [Wombat](#wombat)
-    1. [Rhino](#rhino)
-    1. [Content Repo](#content-repo-crepo)
-1. [Deploying pre-built WAR files](#deploying-pre-built-war-files)
-1. [Compiling the components](#compiling-the-components)
+    2. [Rhino](#rhino)
+    3. [Content Repo](#content-repo-crepo)
+2. [Deploying pre-built WAR files](#deploying-pre-built-war-files)
+3. [Compiling the components](#compiling-the-components)
     1. [System requirements](#system-requirements)
-    1. [Setting up the databases](#setting-up-the-databases)
-    1. [Compiling Rhino](#compiling-rhino)
-    1. [Compiling Wombat](#compiling-wombat)
-    1. [Compiling Content Repo](#compiling-content-repo)
-1. [Setting up a theme directory](#setting-up-a-theme-directory)
+    2. [Setting up the databases](#setting-up-the-databases)
+    3. [Compiling Rhino](#compiling-rhino)
+    4. [Compiling Wombat](#compiling-wombat)
+    5. [Compiling Content Repo](#compiling-content-repo)
+4. [Setting up a theme directory](#setting-up-a-theme-directory)
     1. [Themes Configuration](#themes-configuration)
-    1. [Theme Overrides](#theme-overrides)
-1. [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat)
+    2. [Theme Overrides](#theme-overrides)
+5. [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat)
     1. [Viewing the "hello world" page for each component](#viewing-the-hello-world-page-for-each-component)
-1. [Ingesting an article](#ingesting-an-article)
+6. [Ingesting an article](#ingesting-an-article)
 
 # Walkthrough of the Ambra core components
 
@@ -55,10 +55,10 @@ You can set up and run ambra without compiling any code. Simply use the war file
 
 ### Overview
 1. Java 8
-1. Mysql
-1. Maven
-1. Tomcat
-1. Solr
+2. Mysql
+3. Maven
+4. Tomcat
+5. Solr
 
 ### Java 8
 The Java 8 development kit (JDK8) is required to develop and compile the Ambra webapp.
@@ -115,7 +115,7 @@ Example:
 Rhino requires two configuration files placed in configuration directory.
   
 1. `rhino.yaml` ([example](#https://plos.github.io/ambraproject/example/wombat.yaml))
-1. `context.xml` ([example](#https://plos.github.io/ambraproject/example/context.xml))
+2. `context.xml` ([example](#https://plos.github.io/ambraproject/example/context.xml))
   
 The files listed above have some required fields - see the example files included in this project.
   
@@ -124,7 +124,7 @@ Clone the [Rhino github project](https://github.com/PLOS/rhino.git) into your am
 ## Compiling Rhino
 Compile Rhino with maven:
 1. navigate to the rhino working directory - `cd ~/projects/rhino`
-1. `mvn clean install`
+2. `mvn clean install`
  
 ## Compiling Wombat
 
@@ -135,16 +135,16 @@ Clone the [Wombat github project](https://github.com/PLOS/wombat.git) into your 
 
 Compile Wombat with maven:
 1. navigate to the wombat working directory - `cd ~/projects/wombat`
-1. `mvn clean install`
+2. `mvn clean install`
 
 ## Compiling Content Repo
 
 1. Clone the [crepo github project](https://github.com/PLOS/content-repo.git) into your projects folder. This will be your crepo working directory.
-1. Make sure to configure `context.xml` in your configuration directory to use the content repo. See the [example](#https://plos.github.io/ambraproject/example/context.xml) file. 
+2. Make sure to configure `context.xml` in your configuration directory to use the content repo. See the [example](#https://plos.github.io/ambraproject/example/context.xml) file. 
 
 Compile crepo with maven:
 1. navigate to the crepo working directory - `cd ~/projects/crepo`
-1. `mvn clean install`
+2. `mvn clean install`
 
 ## Setting up a theme directory
 
@@ -166,7 +166,7 @@ Every Freemarker Template, configuration, and resource file in Wombat can be ove
 For example to override `email.yaml`:
 1. create a folder with the same directory structure as Wombat, starting from `src/main/webapp/WEB-INF/themes` 
     1. In Wombat this file is located at `src/main/webapp/WEB-INF/themes/root/config/email.yaml`
-    1. In your theme, this file should be located at `$YOUR_THEME_PATH/config/email.yaml`
+    2. In your theme, this file should be located at `$YOUR_THEME_PATH/config/email.yaml`
 
 #### Homepage
 
@@ -183,16 +183,16 @@ To define new resources to use in your homepage, such as images or CSS files, pl
 Use maven to deploy each component. This is where you will set the application port as well as define the configuration directory:
 
 1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
-1. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
-1. Crepo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
+2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
+3. Crepo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
 
 ### Viewing the "hello world" page for each component
 
 Go to `http://localhost:<PORT>` to view the root page for each application
 
 1. Rhino: Swagger API interface
-1. crepo: Swagger API interface
-1. Wombat: debug or root page.
+2. crepo: Swagger API interface
+3. Wombat: debug or root page.
 
 ## Ingesting an article
 

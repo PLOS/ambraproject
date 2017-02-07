@@ -13,21 +13,21 @@ For instructions for setting up the Ambra stack, please see the Quickstart-Guide
 # Table of Contents:
 
 1. [The JATS standard](#the-jats-standard)
-1. [The article package](#the-article-package)
+2. [The article package](#the-article-package)
     1. [manifest.xml](#manifestxml)
         1. [Manifest XML Example](#manifest-xml-example)
-        1. [Required Tags](#required-tags)
-    1. [manuscript.xml](#manuscriptxml)
+        2. [Required Tags](#required-tags)
+    2. [manuscript.xml](#manuscriptxml)
         1. [eISSN](#eissn)
-        1. [JATS deviations](#jats-deviations)
-    1. [Printable](#printable)
-    1. [Article Assets](#article-assets-figures-tables-and-supplementary-material)
+        2. [JATS deviations](#jats-deviations)
+    3. [Printable](#printable)
+    4. [Article Assets](#article-assets-figures-tables-and-supplementary-material)
         1. [Article Asset Types](#article-asset-types)
-1. [Ingesting an article into Rhino](#ingesting-an-article-into-rhino)
+3. [Ingesting an article into Rhino](#ingesting-an-article-into-rhino)
     1. [Creating a Content Repo bucket](#creating-a-content-repo-bucket)
-    1. [Uploading the article](#uploading-an-article)
-    1. [Adding an article revision](#adding-an-article-revision)
-1. [Viewing the article](#viewing-the-article)
+    2. [Uploading the article](#uploading-an-article)
+    3. [Adding an article revision](#adding-an-article-revision)
+4. [Viewing the article](#viewing-the-article)
         
 # The JATS standard
 
@@ -98,17 +98,17 @@ It is optional to include `manifest.dtd` in your article package. If you choose 
 The example above, as well as the manifest DTD, define all required tags.
 
 1. The `xml` and `DOCTYPE` tags are required and can be copied verbatim from the example.
-1. `manifest` must be used as the top-level container tag.
-1. `articleBundle` contains everything used to display the article.
-1. `article` defines the article uri (DOI).
+2. `manifest` must be used as the top-level container tag.
+3. `articleBundle` contains everything used to display the article.
+4. `article` defines the article uri (DOI).
     1. must contain a `representation` tag for the XML and printable versions of your article.
-1. `object` is a general container tag for graphics and supplementary material. It also requires `representation` tags, but the requirements differ based on object type. Graphics will be covered in more detail later in the guide.
-1. `representation` requirements:
+5. `object` is a general container tag for graphics and supplementary material. It also requires `representation` tags, but the requirements differ based on object type. Graphics will be covered in more detail later in the guide.
+6. `representation` requirements:
     1. `entry` - value is identical to the filename
-    1. `key` - unique identifier for the asset
-    1. `mimetype` - MIME type of the asset
-    1. `type` - varies based on object type, covered in "Graphics" below.
-1. `ancillary` contains any extra files, represented in `file` nodes. Both `manifest.xml` and `manifest.dtd` are required.
+    2. `key` - unique identifier for the asset
+    3. `mimetype` - MIME type of the asset
+    4. `type` - varies based on object type, covered in "Graphics" below.
+7. `ancillary` contains any extra files, represented in `file` nodes. Both `manifest.xml` and `manifest.dtd` are required.
     1. `file` nodes require `entry`, `key`, and `mimetype` attributes.
 
 ## Manuscript.xml
@@ -133,7 +133,7 @@ There are two known issues when rendering a JATS article in Wombat:
  
 1. The `<!DOCTYPE` tag should not be included. 
     * If included, the article will not render, and Wombat will throw a DTD-not-found exception.
-1. The `<copyright-statement>` tag is not rendered. Use the `<license-p>` tag instead.
+2. The `<copyright-statement>` tag is not rendered. Use the `<license-p>` tag instead.
 
 PLOS is actively working to resolve these issues.
 
@@ -150,17 +150,17 @@ Each included article asset requires at least one resized copy. The copy, or cop
 ### Article Asset Types
  
 1. figure - A standard image that will fit most use cases. Requires *original*, *large*, *medium*, *small*, and *inline* representations.
-1. graphic - used for inline images. Requires *original* and *inline* representations.
-1. table - used for tabular data. Requires *original*, *large*, *medium*, *small*, and *inline* representations.
-1. supplementaryMaterial - used for supplementary material such as videos or other media. Requires *only* the supplementary type.
+2. graphic - used for inline images. Requires *original* and *inline* representations.
+3. table - used for tabular data. Requires *original*, *large*, *medium*, *small*, and *inline* representations.
+4. supplementaryMaterial - used for supplementary material such as videos or other media. Requires *only* the supplementary type.
 
 #### Figure and Table Size Types
 
 1. original - the original image with original dimensions. 
-1. large - used in the stand-alone image view and the image viewer. Should be able to fit on a standard computer screen.
-1. medium - used on the homepage. Should be less than half the size of the large version.
-1. small - used in issues and the current issue on the homepage. Should be less than half the size of the medium version.
-1. inline - used for inline equations. Should be able to fit close to a line in the text.
+2. large - used in the stand-alone image view and the image viewer. Should be able to fit on a standard computer screen.
+3. medium - used on the homepage. Should be less than half the size of the large version.
+4. small - used in issues and the current issue on the homepage. Should be less than half the size of the medium version.
+5. inline - used for inline equations. Should be able to fit close to a line in the text.
 
 The sizes for these images are not strict and tweaking may be necessary.
 
@@ -171,23 +171,23 @@ These requirements are also defined in the example XML above.
 Ingesting an article into Rhino takes three steps.
 
 1. A bucket must exist in Content Repo with the same name defined in `rhino.yaml`.
-1. Upload the article to Rhino
-1. Create a revision in Rhino
+2. Upload the article to Rhino
+3. Create a revision in Rhino
 
 ## Creating a Content Repo bucket
 
 1. Visit the Content Repo root page where you'll see a swagger interface.
-1. Click on `Create a bucket` within the `buckets` section.
-1. You'll see a bucket creation form. Enter `corpus` as the name.
-1. Click the `Try it out!` button.
+2. Click on `Create a bucket` within the `buckets` section.
+3. You'll see a bucket creation form. Enter `corpus` as the name.
+4. Click the `Try it out!` button.
 
 ## Uploading an article
 
 1. Visit the Rhino root page where you'll see a swagger interface.
-1. Click on `ingestible-zip-controller`.
-1. Click on `zipUpload` or anywhere on the green bar.
-1. Click the `Browse...` button and upload your article package zipfile.
-1. Click the `Try it out!` button.
+2. Click on `ingestible-zip-controller`.
+3. Click on `zipUpload` or anywhere on the green bar.
+4. Click the `Browse...` button and upload your article package zipfile.
+5. Click the `Try it out!` button.
 
 This will ingest the article into Rhino and save the data to the database and content repo. 
 
@@ -196,11 +196,11 @@ Ambra is designed versioning in mind. This means when you ingest an article, we 
 ## Adding an article revision
 
 1. Visit the Rhino root page where you'll see a swagger interface.
-1. Click on `article-crud-controller`.
-1. Click on `writeRevision`.
-1. Enter the doi. Because of a quirk in the DOI standard, if your doi includes a slash `/` it must be replaced with `++`.
-1. Enter the ingestion number.
-1. Click the `Try it out!` button.
+2. Click on `article-crud-controller`.
+3. Click on `writeRevision`.
+4. Enter the doi. Because of a quirk in the DOI standard, if your doi includes a slash `/` it must be replaced with `++`.
+5. Enter the ingestion number.
+6. Click the `Try it out!` button.
 
 # Viewing the article
 
