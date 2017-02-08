@@ -83,7 +83,7 @@ mysql -uroot -e "DROP DATABASE IF EXISTS ambra;"
 mysql -uroot -e "CREATE DATABASE ambra;"
 ```
 
-Import the ambra schema, `ambra-schema.sql` into the `ambra` database. For example:
+Download the Ambra schema ([`ambra-schema.sql`](https://plos.github.io/ambraproject/example/ambra-schema.sql)) and import it into the `ambra` database. For example:
 
 ```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -p ambra < ambra-schema.sql
