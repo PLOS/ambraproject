@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Quickstart Guide
-navigation_weight: 1
+navigation_weight: 2
 
 
 ---
