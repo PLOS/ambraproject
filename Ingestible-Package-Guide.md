@@ -115,7 +115,7 @@ The example above, as well as the manifest DTD, define all required tags.
 
 The manuscript XML contains the text for your article, including references to images. 
  
-There are standard tags to use for the abstract, author list, citations, etc. Please consult the [JATS standard](https://jats.nlm.nih.gov/index.html) or refer to the example article packages [here](http://downloads.ambraproject.org/downloads/article_examples).
+There are standard tags to use for the abstract, author list, citations, etc. Please consult the [JATS standard](https://jats.nlm.nih.gov/index.html) or refer to the example article packages [here](http://downloads.ambraproject.orgarticle_examples).
 
 ### eISSN
 
