@@ -215,6 +215,6 @@ Go to `http://localhost:<PORT>` to view the root page for each application.
 
 ## Ingesting an article
 
-PLOS provides some sample article package zip files for ingestion, located [here](http://www.ambraproject.org/downloads/article_examples).
+PLOS provides some sample article package zip files for ingestion, located [here](http://downloads.ambraproject.org/article_examples).
 
 You can ingest and publish an article package using Rhino's Swagger interface. For complete instructions, see "Ingesting the article into Rhino" in the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html).
