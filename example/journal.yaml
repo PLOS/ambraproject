@@ -4,6 +4,7 @@ journalKey: null
 # articles may be viewed on this site.
 #
 # This configuration value is mandatory and must be overridden with a non-null string in order for the site to work.
+# It must match the journalKey field of a row in the database's journal table.
 
 journalName: null
 # The full, human-readable name of the journal.
