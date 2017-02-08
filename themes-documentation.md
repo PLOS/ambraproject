@@ -5,17 +5,17 @@ navigation_weight: 3
 
 ---
 
-We have included a sanitized version of our journal theme repository as reference to our implemention. We wanted show an example of how we set up our theme structure. We also wanted to provide anyone using a=Ambra as a journal platform with some example code and ideas for features we developed.
+We have included a sanitized version of our journal theme repository as reference to our implementation. We wanted show an example of how we set up our theme structure. We also wanted to provide anyone using Ambra as a journal platform with some example code and ideas for features we developed.
 
 #The problem we were trying to solve
 
 PLOS has seven journals as well as at least one supporting site. The journals share a lot of similarities in layout and features, but they have some differences, both major and minor. Our mega journal PLOS ONE has some very different features - for example: homepage and browsing features - than the other 6 journals.  
 
-We also needed to make a distinction between mobile and desktop. Wombat is not a fully reponsive site. Long form scientific papers do not render well on a small device. Creating a separate mobile site made more sense for our needs. 
+We also needed to make a distinction between mobile and desktop. Wombat is not a fully responsive site. Long form scientific papers do not render well on a small device. Creating a separate mobile site made more sense for our needs. 
 
-A few use cases to illustrate: We wanted PLOS ONE to have a very different homepage layout than our other journals.  In the old ambra theming structure we would have to create 6 identical templates and a PLOS ONE template. Maintance, testing and development were the opposite of efficent. 
+A few use cases to illustrate: We wanted PLOS ONE to have a very different homepage layout than our other journals.  In the old ambra theme structure we would have to create 6 identical templates and a PLOS ONE template. Maintenance, testing and development were the opposite of efficient. 
 
-In new ambra we strove to create a theming structure that would allow inheritance from a parent theme. This way we could have all the sites use the same parent homepage template and only overide this template for PLOS ONE. 
+In new ambra we strove to create a theme structure that would allow inheritance from a parent theme. This way we could have all the sites use the same parent homepage template and only override this template for PLOS ONE. 
 
 We then wanted to be able to do the same thing for desktop and mobile pages. For example it was important for both the desktop and mobile sites to share page templates but have different headers and footers. 
 
@@ -25,13 +25,13 @@ We settled on a system that allows you set up a hierarchy of parent themes in th
 
 #Inheritance 
 
-Wombat searches up ???? down??? through the template hierarchy until it finds a matching .ftl, resource or config file (for example, logo.png, email.yaml, headerContent. ftl etc). To determine which file to use, Wombat selects the file using the hierarchy setup by your theme structure in the wombat.yaml file.
+Wombat descends through the template hierarchy until it finds a matching .ftl, resource or config file (for example, logo.png, email.yaml, headerContent. ftl etc). To determine which file to use, Wombat selects the file using the hierarchy setup by your theme structure in the wombat.yaml file.
 
-Wombat looks for files with specific names in the theme’s directories and uses the ??final?? matching template file in the hierarchy. ???You can choose whether you want to overide a particular file or not.??? 
+Wombat looks for files with specific names in the theme’s directories and uses the ??final?? matching template file in the hierarchy. ???You can choose whether you want to override a particular file or not.??? 
 
 #Plos-Themes Inheritance Structure
 
-For each of our journals(PLOS One, PLOS Biology) we set up this basic structure in our yaml file [see example](https://plos.github.io/ambraproject/example/wombat.yaml.plos):
+For each of our journals, such as PLOS One and PLOS Biology, we set up this basic structure in our yaml file [see example](https://plos.github.io/ambraproject/example/wombat.yaml.plos):
 
 - **Parent Theme: ```Plos```**
 Theme common to all PLOS journal sites, regardless of the device type (desktop or mobile) and which journal it is.
@@ -67,7 +67,7 @@ header.ftl is placed in ```plos-themes/code/desktop/all_sites/ftl/```
 For the 6 journals home.ftl is placed in ```plos-themes/code/desktop/all_sites/ftl/home/```.
 For PLOS One home.ftl is placed in ```plos-themes/code/desktop/journals/PlosOne/ftl/home/```.
 ##Each of our journals has their own logo shared between the desktop and mobile sites
-logo.png is placed in ```plos-themes/all_devices/journals/PlosOne/resource/img/``` - repeated for each journal of course 
+logo.png is placed in ```plos-themes/all_devices/journals/PlosOne/resource/img/``` - repeated for each journal
 
 
 
