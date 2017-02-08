@@ -8,17 +8,17 @@ title: Releases
 
 ## Wombat
 
-* Latest release: [3.2.0](http://ambraproject.org/downloads/releases/wombat-3.2.0.war)
+* Latest release: [3.2.0](http://downloads.ambraproject.org/releases/wombat-3.2.0.war)
 * [Source repository](https://github.com/PLOS/wombat)
 
 ## Rhino
 
-* Latest release: [2.2.0](http://ambraproject.org/downloads/releases/rhino-2.2.0.war)
+* Latest release: [2.2.0](http://downloads.ambraproject.org/releases/rhino-2.2.0.war)
 * [Source repository](https://github.com/PLOS/rhino)
 
 ## Content Repo
 
-* Latest release: [1.2.0](http://ambraproject.org/downloads/releases/content-repo-1.2.0.war)
+* Latest release: [1.2.0](http://downloads.ambraproject.org/releases/content-repo-1.2.0.war)
 * [Source repository](https://github.com/PLOS/content-repo)
 
 ## Named Entity Database (NED)
@@ -41,12 +41,8 @@ title: Releases
 
 # Accessories
 
-## Example theme code
-
-* [plos-example-themes.tar.gz](http://ambraproject.org/downloads/releases/plos-example-themes.tar.gz)
-
 ## Example ingestible articles
 
-* [pone.0005723](http://ambraproject.org/downloads/article_examples/pone.0005723.zip)
-* [pone.0105948](http://ambraproject.org/downloads/article_examples/pone.0105948.zip)
-* [pone.0153419](http://ambraproject.org/downloads/article_examples/pone.0153419.zip)
+* [pone.0005723](http://downloads.ambraproject.org/article_examples/pone.0005723.zip)
+* [pone.0105948](http://downloads.ambraproject.org/article_examples/pone.0105948.zip)
+* [pone.0153419](http://downloads.ambraproject.org/article_examples/pone.0153419.zip)
