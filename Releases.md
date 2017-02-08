@@ -41,6 +41,10 @@ title: Releases
 
 # Accessories
 
+## Example theme code
+
+* [plos-example-themes.tar.gz](http://ambraproject.org/downloads/releases/plos-example-themes.tar.gz)
+
 ## Example ingestible articles
 
 * [pone.0005723](http://downloads.ambraproject.org/article_examples/pone.0005723.zip)
