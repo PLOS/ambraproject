@@ -161,8 +161,8 @@ Each included article asset requires at least one resized copy. The copy, or cop
 1. `original` - The original image at its maximum resolution.
 2. `large` - Used in the stand-alone image view and the image viewer. Should be able to fit on a standard computer screen.
 3. `medium` - Used on the homepage. Should be less than half the size of the large version.
-4. `small` - Used in issues and the current issue on the homepage. Should be less than half the size of the medium version.
-5. `inline` - Used for inline equations. Should be able to fit close to a line in the text.
+4. `inline` - Used within the article body. Should be slightly smaller than the medium version.
+5. `small` - Used in issues and the current issue on the homepage. Should be less than half the size of the medium version.
 
 The sizes for these images are not strict and tweaking may be necessary.
 
