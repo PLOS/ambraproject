@@ -27,7 +27,7 @@ We settled on a system that allows you set up a hierarchy of parent themes in th
 
 # Inheritance
 
-Wombat descends through the template hierarchy until it finds a matching `.ftl`, resource, or config file (for example, `logo.png`, `email.yaml`, `headerContent.ftl` etc). To determine which file to use, Wombat selects the file using the hierarchy setup by your theme structure in the `wombat.yaml` file.
+Wombat descends through the template hierarchy until it finds a matching `.ftl`, resource, or config file (for example, `logo.png`, `email.yaml`, `headerContent.ftl` etc). To determine which file to use, Wombat selects the file using the hierarchy specified by your theme structure in the `wombat.yaml` file.
 
 If more than one file has the same name, Wombat will use the one furthest down the hierarchy.
 
