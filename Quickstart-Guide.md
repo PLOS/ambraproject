@@ -165,11 +165,15 @@ You may [explore these directories](https://github.com/PLOS/wombat/tree/master/s
 
 A theme requires a file named `journal.yaml` placed in the `config` directory at the theme path. For example:
 
-```$HOME/ambra/themes/my_theme/config/journal.yaml```
+```
+$HOME/ambra/themes/my_theme/config/journal.yaml
+```
 
 This overrides the file found in Wombat's source code at
 
-```src/main/webapp/WEB-INF/themes/root/config/journal.yaml```
+```
+src/main/webapp/WEB-INF/themes/root/config/journal.yaml
+```
 
 There are two required fields: `journalKey` and `journalName`. [See an example.](#https://plos.github.io/ambraproject/example/journal.yaml)
 
@@ -179,7 +183,9 @@ Other config files control the application's behavior in other ways; `journal.ya
 
 You can get started by setting your homepage content with a theme override. The homepage body is defined by the theme file at `ftl/home/body.ftl`. Create a file at this path in your theme; for example:
 
-```$HOME/ambra/themes/my_theme/ftl/home/body.ftl```
+```
+$HOME/ambra/themes/my_theme/ftl/home/body.ftl
+```
 
 Edit it to fill in the HTML or FreeMarker code for your homepage content.
 
