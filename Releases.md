@@ -49,4 +49,3 @@ title: Releases
 
 * [pone.0005723](http://downloads.ambraproject.org/article_examples/pone.0005723.zip)
 * [pone.0105948](http://downloads.ambraproject.org/article_examples/pone.0105948.zip)
-* [pone.0153419](http://downloads.ambraproject.org/article_examples/pone.0153419.zip)
