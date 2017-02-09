@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Working With Themes
-navigation_weight: 3
+title: Working With PLOS-Themes
+navigation_weight: 4
 
 ---
 
-We have included a sanitized version of our journal theme repository as reference to our implementation. We wanted show an example of how we set up our theme structure. We also wanted to provide anyone using Ambra as a journal platform with some example code and ideas for features we developed.
+We have included our journal theme repository (with a few redactions for security) version of our journal theme repository as reference to our implementation. We wanted show an example of how we set up our theme structure. We also wanted to provide anyone using Ambra as a journal platform with some example code and ideas for features we developed.
 
 # The problem we were trying to solve
 
