@@ -5,7 +5,7 @@ navigation_weight: 4
 
 ---
 
-We have included our journal theme repository (with a few redactions for security) as a reference to our implementation, [here](http://ambraproject.org/downloads/releases/plos-example-themes.tar.gz).
+We have included our journal theme repository (with a few redactions for security) as a reference to our implementation, [here](http://downloads.ambraproject.org/releases/plos-example-themes.tar.gz).
 
 # The problem we were trying to solve
 
