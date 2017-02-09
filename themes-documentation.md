@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Working With PLOS-Themes
+title: Working with PLOS's Themes
 navigation_weight: 4
 
 ---
