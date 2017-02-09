@@ -126,7 +126,7 @@ On a production system, `/etc/ambra` is recommended for the configuration direct
 
 Rhino requires two configuration files placed in configuration directory.
 
-1. `rhino.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml))
+1. `rhino.yaml` ([example](https://plos.github.io/ambraproject/example/rhino.yaml))
 2. `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml))
 
 The files listed above have some required fields - see the example files included in this project.
@@ -134,7 +134,7 @@ The files listed above have some required fields - see the example files include
 #### Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields - see the [example](https://plos.github.io/ambraproject/example/context.xml) file.
+`wombat.yaml` has some required fields - see the [example](https://plos.github.io/ambraproject/example/wombat.yaml) file.
 
 #### Content Repo
 
