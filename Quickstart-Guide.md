@@ -125,19 +125,19 @@ On a production system, `/etc/ambra` is recommended for the configuration direct
 
 Rhino requires two configuration files placed in configuration directory.
 
-1. `rhino.yaml` ([example](#https://plos.github.io/ambraproject/example/wombat.yaml))
-2. `context.xml` ([example](#https://plos.github.io/ambraproject/example/context.xml))
+1. `rhino.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml))
+2. `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml))
 
 The files listed above have some required fields - see the example files included in this project.
 
 #### Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields - see the [example](#https://plos.github.io/ambraproject/example/context.xml) file.
+`wombat.yaml` has some required fields - see the [example](https://plos.github.io/ambraproject/example/context.xml) file.
 
 #### Content Repo
 
-In addition to the Rhino configuration, the `context.xml` in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store. See the [example](#https://plos.github.io/ambraproject/example/context.xml) file.
+In addition to the Rhino configuration, the `context.xml` in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store. See the [example](https://plos.github.io/ambraproject/example/context.xml) file.
 
 ## Setting up a theme directory
 
@@ -175,7 +175,7 @@ This overrides the file found in Wombat's source code at
 src/main/webapp/WEB-INF/themes/root/config/journal.yaml
 ```
 
-There are two required fields: `journalKey` and `journalName`. [See an example.](#https://plos.github.io/ambraproject/example/journal.yaml)
+There are two required fields: `journalKey` and `journalName`. [See an example.](https://plos.github.io/ambraproject/example/journal.yaml)
 
 Other config files control the application's behavior in other ways; `journal.yaml` is the only mandatory override. They are documented by the root files in Wombat's source code, which you may override individually.
 
