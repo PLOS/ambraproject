@@ -111,6 +111,7 @@ mysql -uroot -e "CREATE DATABASE repo;"
 You will need to create a configuration directory and a directory to hold files in CRepo's datastore.
 
 On a toy system, a recommended setup is:
+
 ```bash
   mkdir $HOME/ambra
   mkdir $HOME/ambra/crepo_datastore  # CRepo datastore directory
@@ -142,9 +143,11 @@ In addition to the Rhino configuration, the `context.xml` in your configuration 
 ## Setting up a theme directory
 
 Create a new directory to house your site's theme configuration. If you are using a `$HOME/ambra` directory as in the example above, then do
+
 ```bash
   mkdir -p $HOME/ambra/themes/my_theme
 ```
+
 You may substitute your publication's name for `my_theme`.
 
 On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
