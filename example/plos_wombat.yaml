@@ -1,0 +1,364 @@
+################################### WARNING ###################################
+# Would you kindly be cautious when hand-editing this file. Copy/paste
+# may insert improperly encoded space characters or other oddities.
+
+################################ System Config ################################
+
+server: http://localhost:8123/
+# URL of the server for the service API ("Rhino")
+
+solrServer: http://localhost:8983/solr/select/
+# URL of the Solr server.
+
+compiledAssetDir: null
+# The local directory to which to write compiled JavaScript and CSS assets.
+#
+# If null, JavaScript and CSS code will not be compiled, so it will show up
+# unminified for "dev mode".
+
+httpConnectionPool:
+  maxTotal:           100
+  defaultMaxPerRoute: 100
+# Values for HTTP connection management. Setting these too low can cause
+# serious performance degradation. For details, see
+# org.apache.http.impl.conn.PoolingHttpClientConnectionManager,
+# http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html
+
+cache:
+  memcachedHost: null
+  memcachedPort: null
+  cacheAppPrefix: null
+# Parameters for Memcached. Set all to null to disable Memcached. Otherwise,
+# all three are required.
+
+
+################################### Themes ####################################
+
+themes:
+
+  # ========================================
+  # Prototype non-PLOS themes.
+
+  - key:    DesktopGeneric
+    path:   plos-themes/code/desktop/Generic
+    parent: .Desktop
+
+  - key:    MobileGeneric
+    path:   plos-themes/code/mobile/Generic
+    parent: .Mobile
+
+  # ========================================
+  # Theme common to all PLOS journal sites, regardless of the device type
+  # (desktop or mobile) and which journal it is.
+
+  - key:    Plos
+    path:   plos-themes/code/all_devices/all_sites
+    parent: .Root
+
+  # ========================================
+  # Themes for a site category (device type) that are not specific to a
+  # journal.
+
+  - key:    DesktopPlos
+    path:   plos-themes/code/desktop/all_sites
+    parent:
+      - Plos
+      - .Desktop
+
+  - key:    MobilePlos
+    path:   plos-themes/code/mobile/all_sites
+    parent:
+      - Plos
+      - .Mobile
+
+  # ========================================
+  # Themes for a journal that are not specific to a site category.
+
+  - key:    PlosOne
+    path:   plos-themes/code/all_devices/journals/PlosOne
+    parent: Plos
+
+  - key:    PlosBiology
+    path:   plos-themes/code/all_devices/journals/PlosBiology
+    parent: Plos
+
+  - key:    PlosMedicine
+    path:   plos-themes/code/all_devices/journals/PlosMedicine
+    parent: Plos
+
+  - key:    PlosCompBiol
+    path:   plos-themes/code/all_devices/journals/PlosCompBiol
+    parent: Plos
+
+  - key:    PlosGenetics
+    path:   plos-themes/code/all_devices/journals/PlosGenetics
+    parent: Plos
+
+  - key:    PlosPathogens
+    path:   plos-themes/code/all_devices/journals/PlosPathogens
+    parent: Plos
+
+  - key:    PlosNtds
+    path:   plos-themes/code/all_devices/journals/PlosNtds
+    parent: Plos
+
+  - key:    PlosCollections
+    path:   plos-themes/code/all_devices/journals/PlosCollections
+    parent: Plos
+
+  - key:    PlosClinicalTrials
+    path:   plos-themes/code/all_devices/journals/PlosClinicalTrials
+    parent: Plos
+
+  # ========================================
+  # Themes for individual sites. Each of these is specific to both a journal
+  # and a device type.
+
+  - key:    DesktopPlosOne
+    path:   plos-themes/code/desktop/journals/PlosOne
+    parent:
+      - PlosOneContent
+      - DesktopPlos
+      - PlosOne
+
+  - key:    DesktopPlosBiology
+    path:   plos-themes/code/desktop/journals/PlosBiology
+    parent:
+      - PlosBiologyContent
+      - DesktopPlos
+      - PlosBiology
+
+  - key:    DesktopPlosMedicine
+    path:   plos-themes/code/desktop/journals/PlosMedicine
+    parent:
+      - PlosMedicineContent
+      - DesktopPlos
+      - PlosMedicine
+
+  - key:    DesktopPlosCompBiol
+    path:   plos-themes/code/desktop/journals/PlosCompBiol
+    parent:
+      - PlosCompBiolContent
+      - DesktopPlos
+      - PlosCompBiol
+
+  - key:    DesktopPlosGenetics
+    path:   plos-themes/code/desktop/journals/PlosGenetics
+    parent:
+      - PlosGeneticsContent
+      - DesktopPlos
+      - PlosGenetics
+
+  - key:    DesktopPlosPathogens
+    path:   plos-themes/code/desktop/journals/PlosPathogens
+    parent:
+      - PlosPathogensContent
+      - DesktopPlos
+      - PlosPathogens
+
+  - key:    DesktopPlosNtds
+    path:   plos-themes/code/desktop/journals/PlosNtds
+    parent:
+      - PlosNtdsContent
+      - DesktopPlos
+      - PlosNtds
+
+  - key:    DesktopPlosCollections
+    path:   plos-themes/code/desktop/journals/PlosCollections
+    parent:
+      - PlosCollectionsContent
+      - DesktopPlos
+      - PlosCollections
+
+  - key:    DesktopPlosClinicalTrials
+    path:   plos-themes/code/desktop/journals/PlosClinicalTrials
+    parent:
+      - PlosClinicalTrialsContent
+      - DesktopPlos
+      - PlosClinicalTrials
+
+  - key:    MobilePlosOne
+    path:   plos-themes/code/mobile/journals/PlosOne
+    parent:
+      - PlosOneContent
+      - MobilePlos
+      - PlosOne
+
+  - key:    MobilePlosBiology
+    path:   plos-themes/code/mobile/journals/PlosBiology
+    parent:
+      - PlosBiologyContent
+      - MobilePlos
+      - PlosBiology
+
+  - key:    MobilePlosMedicine
+    path:   plos-themes/code/mobile/journals/PlosMedicine
+    parent:
+      - PlosMedicineContent
+      - MobilePlos
+      - PlosMedicine
+
+  - key:    MobilePlosCompBiol
+    path:   plos-themes/code/mobile/journals/PlosCompBiol
+    parent:
+      - PlosCompBiolContent
+      - MobilePlos
+      - PlosCompBiol
+
+  - key:    MobilePlosGenetics
+    path:   plos-themes/code/mobile/journals/PlosGenetics
+    parent:
+      - PlosGeneticsContent
+      - MobilePlos
+      - PlosGenetics
+
+  - key:    MobilePlosPathogens
+    path:   plos-themes/code/mobile/journals/PlosPathogens
+    parent:
+      - PlosPathogensContent
+      - MobilePlos
+      - PlosPathogens
+
+  - key:    MobilePlosNtds
+    path:   plos-themes/code/mobile/journals/PlosNtds
+    parent:
+      - PlosNtdsContent
+      - MobilePlos
+      - PlosNtds
+
+  - key:    MobilePlosCollections
+    path:   plos-themes/code/mobile/journals/PlosCollections
+    parent:
+      - PlosCollectionsContent
+      - MobilePlos
+      - PlosCollections
+
+  - key:    MobilePlosClinicalTrials
+    path:   plos-themes/code/mobile/journals/PlosClinicalTrials
+    parent:
+      - PlosClinicalTrialsContent
+      - MobilePlos
+      - PlosClinicalTrials
+
+  # ========================================
+  # Content themes, which contain template snippets that are frequently edited
+  # in order to update site content.
+
+  - key:    PlosContent
+    path:   plos-themes/content/all_sites
+    parent: Plos
+
+  - key:    PlosOneContent
+    path:   plos-themes/content/journals/PlosOne
+    parent:
+      - PlosContent
+      - PlosOne
+
+  - key:    PlosBiologyContent
+    path:   plos-themes/content/journals/PlosBiology
+    parent:
+      - PlosContent
+      - PlosBiology
+
+  - key:    PlosMedicineContent
+    path:   plos-themes/content/journals/PlosMedicine
+    parent:
+      - PlosContent
+      - PlosMedicine
+
+  - key:    PlosCompBiolContent
+    path:   plos-themes/content/journals/PlosCompBiol
+    parent:
+      - PlosContent
+      - PlosCompBiol
+
+  - key:    PlosGeneticsContent
+    path:   plos-themes/content/journals/PlosGenetics
+    parent:
+      - PlosContent
+      - PlosGenetics
+
+  - key:    PlosPathogensContent
+    path:   plos-themes/content/journals/PlosPathogens
+    parent:
+      - PlosContent
+      - PlosPathogens
+
+  - key:    PlosNtdsContent
+    path:   plos-themes/content/journals/PlosNtds
+    parent:
+      - PlosContent
+      - PlosNtds
+
+  - key:    PlosCollectionsContent
+    path:   plos-themes/content/journals/PlosCollections
+    parent:
+      - PlosContent
+      - PlosCollections
+
+  - key:    PlosClinicalTrialsContent
+    path:   plos-themes/content/journals/PlosClinicalTrials
+    parent:
+      - PlosContent
+      - PlosClinicalTrials
+
+#################################### Sites ####################################
+
+sites:
+
+  - key:   DesktopGeneric
+    theme: DesktopGeneric
+
+  - key:   MobileGeneric
+    theme: MobileGeneric
+
+  - key:   DesktopPlosOne
+    theme: DesktopPlosOne
+
+  - key:   DesktopPlosBiology
+    theme: DesktopPlosBiology
+
+  - key:   DesktopPlosMedicine
+    theme: DesktopPlosMedicine
+
+  - key:   DesktopPlosCompBiol
+    theme: DesktopPlosCompBiol
+
+  - key:   DesktopPlosGenetics
+    theme: DesktopPlosGenetics
+
+  - key:   DesktopPlosPathogens
+    theme: DesktopPlosPathogens
+
+  - key:   DesktopPlosNtds
+    theme: DesktopPlosNtds
+
+  - key:   DesktopPlosCollections
+    theme: DesktopPlosCollections
+
+  - key:   DesktopPlosClinicalTrials
+    theme: DesktopPlosClinicalTrials
+
+  - key:   MobilePlosOne
+    theme: MobilePlosOne
+
+  - key:   MobilePlosBiology
+    theme: MobilePlosBiology
+
+  - key:   MobilePlosMedicine
+    theme: MobilePlosMedicine
+
+  - key:   MobilePlosCompBiol
+    theme: MobilePlosCompBiol
+
+  - key:   MobilePlosGenetics
+    theme: MobilePlosGenetics
+
+  - key:   MobilePlosPathogens
+    theme: MobilePlosPathogens
+
+  - key:   MobilePlosNtds
+    theme: MobilePlosNtds
+
+  - key:   MobilePlosClinicalTrials
+    theme: MobilePlosClinicalTrials
