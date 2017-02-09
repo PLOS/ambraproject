@@ -48,7 +48,7 @@ title: Releases
 
 ## Example theme code
 
-* [plos-example-themes.tar.gz](http://ambraproject.org/downloads/releases/plos-example-themes.tar.gz)
+* [plos-example-themes.tar.gz](http://downloads.ambraproject.org/releases/plos-example-themes.tar.gz)
 
 ## Example ingestible articles
 
