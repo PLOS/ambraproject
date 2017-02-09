@@ -59,19 +59,19 @@ So the inheritance structure looks like this:
 
 So back to our home page example, here are some requirements and how we tackled them in themes:
 
-## All PLOS journal sites regardless of device have the same footer.
+### All PLOS journal sites regardless of device have the same footer:
 
 The `footer.ftl` file is placed in ```plos-themes/code/all_devices/all_sites/ftl/```
 
-## Desktop sites for all journals have the same header, but the header should not apply to mobile.
+### Desktop sites for all journals have the same header, but the header should not apply to mobile:
 
 `header.ftl` is placed in ```plos-themes/code/desktop/all_sites/ftl/```
 
-## Most of our desktop journals sites need the same homepage, but _PLOS One_ needs a completely separate one.
+### Most of our desktop journals sites need the same homepage, but _PLOS One_ needs a completely separate one:
 
 For the most journals, `home.ftl` is placed in ```plos-themes/code/desktop/all_sites/ftl/home/```.
 For _PLOS One_, the `home.ftl` is placed in ```plos-themes/code/desktop/journals/PlosOne/ftl/home/```.
 
-## Each of our journals has their own logo shared between the desktop and mobile sites
+### Each of our journals has their own logo shared between the desktop and mobile sites:
 
 `logo.png` is placed in ```plos-themes/all_devices/journals/PlosOne/resource/img/``` - repeated for each journal
