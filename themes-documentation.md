@@ -13,8 +13,6 @@ PLOS has seven journals that share a lot of similarities in layout and features,
 
 Our mega journal _PLOS ONE_ has some unique features -- for example, homepage and browsing features -- that differ from the other journals.
 
-For example, we wanted _PLOS ONE_ to have a very different homepage layout than our other journals.
-
 We also needed to theme mobile and desktop differently. Wombat is not a fully responsive site: long-form scientific papers do not render well on a small device. Creating a separate mobile site made more sense for our needs.
 
 We strove to create a theme structure that would allow inheritance from a parent theme. This way, we could have most sites use the same parent homepage template, and override this template for _PLOS ONE_.
