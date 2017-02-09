@@ -31,7 +31,7 @@ If more than one file has the same name, Wombat will use the one furthest down t
 
 # PLOS's Theme Inheritance Structure
 
-For each of our journals, such as _PLOS One_ and _PLOS Biology_, we set up this basic structure in our yaml file [see example](https://plos.github.io/ambraproject/example/wombat.yaml.plos):
+For each of our journals, such as _PLOS One_ and _PLOS Biology_, we set up this basic structure in our yaml file [see example](https://plos.github.io/ambraproject/example/plos_wombat.yaml):
 
 - **Parent Theme: ```Plos```**
 Root theme common to all PLOS journal sites, regardless of the device type (desktop or mobile) and which journal it is.
