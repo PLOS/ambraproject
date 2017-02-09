@@ -21,13 +21,13 @@ License][mit].
 
 Ambra is currently used for by the following journals and publishing platforms:
 
-* [PLOS ONE](http://journals.plos.org/plosone/)
-* [PLOS Medicine](http://journals.plos.org/plosmedicine/)
-* [PLOS Biology](http://journals.plos.org/plosbiology/)
-* [PLOS Computational Biology](http://journals.plos.org/ploscompbiol/)
-* [PLOS Pathogens](http://journals.plos.org/plospathogens/)
-* [PLOS Genetics](http://journals.plos.org/plosgenetics/)
-* [PLOS Neglected Tropical Diseases](http://journals.plos.org/plosntds/)
+* [_PLOS ONE_](http://journals.plos.org/plosone/)
+* [_PLOS Medicine_](http://journals.plos.org/plosmedicine/)
+* [_PLOS Biology_](http://journals.plos.org/plosbiology/)
+* [_PLOS Computational Biology_](http://journals.plos.org/ploscompbiol/)
+* [_PLOS Pathogens_](http://journals.plos.org/plospathogens/)
+* [_PLOS Genetics_](http://journals.plos.org/plosgenetics/)
+* [_PLOS Neglected Tropical Diseases_](http://journals.plos.org/plosntds/)
 * [PLOS Collections](http://collections.plos.org/)
 
 ## How do I get started?
