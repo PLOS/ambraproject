@@ -24,6 +24,16 @@
   box-sizing: border-box;
 }
 
+.column-container{
+  display: flex;
+}
+.column-one{
+width: 75%;
+}
+.column-two{
+  width: 40%;
+  margin-left: 1em;
+}
 body {
   padding: 0;
   margin: 0;
