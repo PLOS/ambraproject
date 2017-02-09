@@ -37,7 +37,7 @@ software.
   [journals]: http://journals.plos.org/
   [email]:    mailto:dev@ambraproject.org
   [oa]:       https://www.plos.org/open-access/
-
+</div>
 <div class="doclist column-two">
 <ul>
     {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
