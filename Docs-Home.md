@@ -10,7 +10,7 @@ title: User Documentation
 
 <p>Ambra has been under continuous development as the engine behind the <a href="http://journals.plos.org/">PLOS
 journals</a> since 2009. For its first two major versions, Ambra was a
-monolithic Struts web application, which was been offered as open source since
+monolithic Struts web application, which has been offered as open source since
 its beginning.</p>
 
 <p>In 2012, PLOS began a project to re-architect Ambra as a service-oriented,
