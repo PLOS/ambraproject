@@ -4,6 +4,8 @@ title: User Documentation
 
 ---
 
+<div class="column-container">
+
 <div class="column-one">
 
 Ambra has been under continuous development as the engine behind the [PLOS
@@ -53,4 +55,5 @@ software.
       {% endif %}
     {% endfor %}
     </ul>
+</div>
 </div>
