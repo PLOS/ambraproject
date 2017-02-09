@@ -25,6 +25,11 @@ title: Releases
 
 * [Source repository](https://github.com/PLOS/named-entity.service)
 
+## Legacy webapps
+
+* [Ambra](https://github.com/PLOS/ambra/)
+* [Ambra Admin](https://github.com/PLOS/ambra-admin/)
+
 # Libraries
 
 ## Rhombat
