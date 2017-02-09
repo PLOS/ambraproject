@@ -24,7 +24,7 @@ for the years prior to its release, you might experience some challenges in
 setting it up. The documentation on this website is intended to provide
 everything you need to get started, but you may encounter omissions, bugs, or
 other obstacles. If you do, we encourage you to <a href="mailto:dev@ambraproject.org">contact us</a>. If the
-project’s current state is rough around the edges, it is because it is
+project's current state is rough around the edges, it is because it is
 relatively new to third-party use and needs feedback from prospective users.
 Your response will drive future improvement of the open-source side of the
 project.</p>
