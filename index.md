@@ -42,7 +42,7 @@ Documentation][docs] to get started.
 ## How do I give feedback?
 
 Please contact us at [dev@ambraproject.org][email] with any questions,
-comments, or concerns. Please use [Github Issues][issues] to report any
+comments, or concerns. Please use [GitHub Issues][issues] to report any
 problems, or submit a pull request.
 
   [email]:  mailto:dev@ambraproject.org?Subject=Ambraproject%20contact
