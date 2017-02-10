@@ -47,7 +47,7 @@ The Content Repo is an append-only repository of article assets, including the m
 
 # Obtaining the binaries
 
-If you have Tomcat installed on your system, you can set up and run Ambra without compiling any code. Download `.war` files from our [Releases page](https://plos.github.io/ambraproject/releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
+If you have Tomcat installed on your system, you can set up and run Ambra without compiling any code. Download `.war` files from our [Releases page](https://plos.github.io/ambraproject/Releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
 
 You can also check out the source code and compile the `.war` artifacts for youself. The source code repositories are located at:
 
