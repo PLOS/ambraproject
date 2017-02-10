@@ -36,7 +36,7 @@ We have provided Ambra web archive (WAR) files [here][releases] that can be
 deployed and evaluated on a web server. Check out the [User
 Documentation][docs] to get started.
 
-  [releases]: http://downloads.ambraproject.org/releases
+  [releases]: Releases.html
   [docs]:     Docs-Home.html
 
 ## How do I give feedback?
