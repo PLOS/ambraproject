@@ -4,6 +4,8 @@ title: Releases
 
 ---
 
+[**All Releases**](http://downloads.ambraproject.org/)
+
 # Web components
 
 ## Wombat
