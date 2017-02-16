@@ -1,0 +1,13 @@
+sites:
+
+  - key:     MySite
+    # Replace the key with the name of your site. If you do not use a "resolve"
+    # entry, this will be part of your site's URL.
+
+    theme:   Main
+    # The theme key must match the "key" entry of a "theme.yaml" file.
+
+    resolve: {}
+    # An empty "resolve" object is suitable for a server that hosts only one
+    # site. The site will be served from the root of your servlet path. Delete
+    # the "resolve" entry to use the site key as part of the URL by default.
