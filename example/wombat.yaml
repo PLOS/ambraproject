@@ -1,7 +1,13 @@
-################################ System Config ################################
 
 server: http://localhost:8123/
 # URL of the server for the service API ("Rhino")
+
+themeSources:
+  - type: filesystem
+    path: $HOME/ambra/themes
+# Replace the "path" value with the actual filesystem path of your themes
+# directory (see "Setting up a theme directory"). Wombat will not be able to
+# use the "$HOME" variable. A file named "sites.yaml" should exist here.
 
 compiledAssetDir: null
 # The local directory to which to write minified JavaScript and CSS assets.
@@ -28,20 +34,3 @@ cache:
 #   casUrl:
 #   loginUrl:
 #   logoutUrl:
-
-
-################################### Themes ####################################
-
-themes:
-
-  - key:    # Place an identifier for the theme here
-    path:   # Place the location you chose for your theme directory here (see "Setting up a theme directory")
-    parent: .Desktop
-
-
-  # ========================================
-
-sites:
-
-  - key:   Desktop
-    theme: Desktop # Must match a themes key, defined above

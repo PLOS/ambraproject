@@ -1,0 +1,5 @@
+journalKey:  my_journal
+# This value must match the "key" field of a "journal" row in the database.
+
+journalName: My Journal
+# Fill in the reader-facing version of the journal's name.

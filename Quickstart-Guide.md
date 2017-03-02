@@ -142,13 +142,20 @@ In addition to the Rhino configuration, the `context.xml` in your configuration 
 
 ## Setting up a theme directory
 
-Create a new directory to house your site's theme configuration. If you are using a `$HOME/ambra` directory as in the example above, then do
+Create a new directory to house your site's theme configuration. The easiest way to create this directory is to explode the starter [`themes.tar.gz`](https://plos.github.io/ambraproject/example/themes.tar.gz) archive. For example, if you are using a `$HOME/ambra` directory as in the example above, then do
 
 ```bash
-  mkdir -p $HOME/ambra/themes/my_theme
+cd $HOME/ambra/
+wget https://plos.github.io/ambraproject/example/themes.tar.gz
+tar -xvzf themes.tar.gz
 ```
 
-You may substitute your publication's name for `my_theme`.
+This will create a directory named `$HOME/ambra/themes`. It will contain:
+
+* a file named `sites.yaml`, which describes the publication sites to be hosted by your server (just one to start); and
+* a directory named `main/`, which is the theme for your one site.
+
+There is no significance to the directory name `main/`, you may change it to anything you wish. You may also change the initial site key in `sites.yaml` to a string that identifies your site.
 
 On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
 
@@ -169,7 +176,7 @@ You may [explore these directories](https://github.com/PLOS/wombat/tree/master/s
 A theme requires a file named `journal.yaml` placed in the `config` directory at the theme path. For example:
 
 ```
-$HOME/ambra/themes/my_theme/config/journal.yaml
+$HOME/ambra/themes/main/config/journal.yaml
 ```
 
 This overrides the file found in Wombat's source code at
@@ -187,12 +194,12 @@ Other config files control the application's behavior in other ways; `journal.ya
 You can get started by setting your homepage content with a theme override. The homepage body is defined by the theme file at `ftl/home/body.ftl`. Create a file at this path in your theme; for example:
 
 ```
-$HOME/ambra/themes/my_theme/ftl/home/body.ftl
+$HOME/ambra/themes/main/ftl/home/body.ftl
 ```
 
 Edit it to fill in the HTML or FreeMarker code for your homepage content.
 
-To define new resources to use in your homepage, such as images or CSS files, place the files at the `resource` theme path (e.g., `$HOME/ambra/themes/my_theme/resource/`). Any files placed here can be linked at the `resource/` path, relative to your homepage URL. For example, you could create an image named `$HOME/ambra/themes/my_theme/resource/banner.jpg` and then link to it from your homepage with
+To define new resources to use in your homepage, such as images or CSS files, place the files at the `resource` theme path (e.g., `$HOME/ambra/themes/main/resource/`). Any files placed here can be linked at the `resource/` path, relative to your homepage URL. For example, you could create an image named `$HOME/ambra/themes/main/resource/banner.jpg` and then link to it from your homepage with
 
 ```html
 <img src="resource/banner.jpg" />
