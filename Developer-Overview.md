@@ -57,13 +57,17 @@ these two abstractions.
 
 Note the relationship between a **site** and a **journal**. A journal may be
 represented by more than one site, as in the "desktop and mobile" example
-above. To resolve a journal key into a link to another site, it is necessary to
-use the `Theme.resolveForeignJournalKey` Java method from the originating
-site's theme. For example, if we are in the `MobilePlosMedicine` site and we
-have a key identifying the journal _PLOS Biology_, we must use the `Site`
-object for `MobilePlosMedicine` to resolve to the `MobilePlosBiology` site.
-Otherwise, there would be no way to tell that we don't want
-`DesktopPlosBiology` instead.
+above. Suppose you have a pointer to a particular journal and want to link to a
+page on the journal's site. But which site, if the journal has more than one?
+In a case like this, the `Theme.resolveForeignJournalKey` Java method finds the
+site that matches the originating site. In code, this would look like:
+
+    Site targetSite = currentSite.getTheme().resolveForeignJournalKey(siteSet, targetJournalKey);
+
+For example, if our `currentSite` is the `MobilePlosMedicine` site and the
+`targetJournalKey` identifies the journal _PLOS Biology_, this code would
+resolve to `MobilePlosBiology` as the `targetSite`. Otherwise, there would be
+no way to tell that we don't want `DesktopPlosBiology` instead.
 
 Request mapping
 ---------------
