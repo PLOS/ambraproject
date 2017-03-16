@@ -10,12 +10,12 @@ title: Releases
 
 ## Wombat
 
-* Latest release: [3.3.0](http://downloads.ambraproject.org/releases/wombat-3.3.0.war)
+* Latest release: [3.3.1](http://downloads.ambraproject.org/releases/wombat-3.3.1.war)
 * [Source repository](https://github.com/PLOS/wombat)
 
 ## Rhino
 
-* Latest release: [2.2.0](http://downloads.ambraproject.org/releases/rhino-2.2.0.war)
+* Latest release: [2.2.1](http://downloads.ambraproject.org/releases/rhino-2.2.1.war)
 * [Source repository](https://github.com/PLOS/rhino)
 
 ## Content Repo
