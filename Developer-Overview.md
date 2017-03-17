@@ -325,7 +325,7 @@ efficiently into one-size-fits-all Hibernate entities. Over time, small
 deficiencies appeared in the designs of these entities: some new things were
 needed but not at the cost of migration; some things turned out to be
 insignificant; some complex relationships were difficult to model in Hibernate
-and let to brittle or unmaintainable code.
+and led to brittle or unmaintainable code.
 
 When we were developing the data model of versioned articles for Rhino version
 2, we explored pulling article metadata aggressively out of the database and
