@@ -8,7 +8,9 @@ navigation_weight: 2
 
 # Introduction
 
-This Quickstart guide provides instructions for setting up a new instance of the Ambra stack. These instructions work for OS and linux systems, we have not tried to install it in windows environments. 
+This Quickstart guide provides instructions for setting up a new instance of the Ambra stack.
+
+These instructions are targeted at Linux and iOS systems. We have not tried to install it in Windows environments.
 
 
 # Table of Contents:
