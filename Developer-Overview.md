@@ -332,10 +332,10 @@ When we were developing the data model of versioned articles for Rhino version
 into the second category, which is parsed dynamically as needed. This added a
 new step to the basic metadata service where we had to read and parse the XML
 manuscript, which incurred a new performance cost, but we determined that the
-cost was acceptable. This approach has the general advantage that bugs in any
-metadata-parsing code could be fixed without backfilling any data: the more
-data you persist at ingestion time, the greater the risk that you are
-persisting it in the wrong form.
+cost was acceptable, especially behind a cache. This approach has the general
+advantage that bugs in any metadata-parsing code could be fixed without
+backfilling any data: the more data you persist at ingestion time, the greater
+the risk that you are persisting it in the wrong form.
 
 As of Rhino version 2, the guiding principle is that we keep as much metadata
 as possible *out* of the database by default, with the assumption that we don't
@@ -345,6 +345,11 @@ need when rendering other pages, or the main page for a different article.
 Mostly, this means data that we need for rendering a link or displaying it in a
 list, such as the title, publication dates, publication stage (i.e., whether it
 is an uncorrected proof), and its relationships with other articles.
+
+The golden rule is that Rhino never should parse the manuscripts of a linear
+number of articles in order for Wombat to render a single page. In a context
+where metadata from many articles is being aggregated, that data must be read
+from the database.
 
 Wombat's main role in parsing data (the third category) is transforming the
 article body text into HTML. Wombat also is responsible for parsing the
