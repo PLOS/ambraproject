@@ -298,3 +298,64 @@ methods.
 | `ServiceResponse<T>` | serve | Fetch something the client expects to exist. Produce a 404 response if it doesn't. |
 
 Note that *none* of these three method types *ever* return `null`.
+
+How metadata is retrieved
+-------------------------
+
+Much of Rhino's functionality is concerned with article metadata, which is
+stored and read in different ways depending on its purpose. It may be helpful to
+think of article data in these broad categories:
+
+1. metadata that Rhino extracts from the article at the time of ingestion and
+   stores in the database, in Solr, or both;
+2. metadata that Rhino parses dynamically from the manuscript whenever it needs
+   to serve it up as JSON;
+3. data (including metadata and the main article text) that Wombat parses or
+   transforms directly from the manuscript; and
+4. dynamic data that is captured after ingestion (e.g., comments), so it must
+   be stored in the database or by some external service (such as an [ALM][alm]
+   server).
+
+  [alm]: http://alm.plos.org/
+
+Distinguishing between the first two categories is an engineering decision.
+Prior to Rhino version 2, it was attempted to keep a comprehensive set of
+article metadata in the database, so that everything could be retrieved
+efficiently into one-size-fits-all Hibernate entities. Over time, small
+deficiencies appeared in the designs of these entities: some new things were
+needed but not at the cost of migration; some things turned out to be
+insignificant; some complex relationships were difficult to model in Hibernate
+and let to brittle or unmaintainable code.
+
+When we were developing the data model of versioned articles for Rhino version
+2, we explored pulling article metadata aggressively out of the database and
+into the second category, which is parsed dynamically as needed. This added a
+new step to the basic metadata service where we had to read and parse the XML
+manuscript, which incurred a new performance cost, but we determined that the
+cost was acceptable. This approach has the general advantage that bugs in any
+metadata-parsing code could be fixed without backfilling any data: the more
+data you persist at ingestion time, the greater the risk that you are
+persisting it in the wrong form.
+
+As of Rhino version 2, the guiding principle is that we keep as much metadata
+as possible *out* of the database by default, with the assumption that we don't
+mind parsing the XML manuscript when we render the main article page or one of
+its tabs. The metadata that we *do* put into the database is whatever we will
+need when rendering other pages, or the main page for a different article.
+Mostly, this means data that we need for rendering a link or displaying it in a
+list, such as the title, publication dates, publication stage (i.e., whether it
+is an uncorrected proof), and its relationships with other articles.
+
+Wombat's main role in parsing data (the third category) is transforming the
+article body text into HTML. Wombat also is responsible for parsing the
+article's list of references to other works, which it needs both to display to
+the reader and to provide in `<meta>` tags. This operation was deemed too
+complex and specialized to put into Rhino's API, where it would have required
+baroque JSON structures and equally hairy code for Wombat to consume them.
+
+In general, we try to minimize the types of data that go into the third
+category, because Rhino is more useful if it can represent as much article
+metadata as possible in general-purpose JSON services. These services are
+available not only to Wombat, but to other in-house tools, some of which we
+don't yet know we need. The services also are useful because developers can
+query them ad-hoc for debugging and such.
