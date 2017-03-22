@@ -71,7 +71,7 @@ Maven is required to compile components of the Ambra stack. Each component can b
 5. Maven (optional)
 
 ### Java 8
-Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Oracle Java 8 Development Kit (JDK8) is required, will not work with the OpenSDK.
+Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
 
 ## Setting Up the Databases
 
