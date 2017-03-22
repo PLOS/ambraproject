@@ -81,8 +81,8 @@ Ambra requires a running MySQL server. Ambra should be compatible with the lates
 #### Ambra database
 
 ```bash
-mysql -uroot -e "DROP DATABASE IF EXISTS ambra;"
-mysql -uroot -e "CREATE DATABASE ambra;"
+mysql -uroot -p -e "DROP DATABASE IF EXISTS ambra;"
+mysql -uroot -p -e "CREATE DATABASE ambra;"
 ```
 
 Download the Ambra schema ([`ambra-schema.sql`](https://plos.github.io/ambraproject/example/ambra-schema.sql)) and import it into the `ambra` database. For example:
@@ -104,8 +104,8 @@ INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My J
 #### Content Repo database
 
 ```bash
-mysql -uroot -e "DROP DATABASE IF EXISTS repo;"
-mysql -uroot -e "CREATE DATABASE repo;"
+mysql -uroot -p -e "DROP DATABASE IF EXISTS repo;"
+mysql -uroot -p -e "CREATE DATABASE repo;"
 ```
 
 ### Directories
