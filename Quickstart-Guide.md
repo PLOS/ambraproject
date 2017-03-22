@@ -156,9 +156,9 @@ tar -xvzf themes.tar.gz
 This will create a directory named `$HOME/ambra/themes`. It will contain:
 
 * a file named `sites.yaml`, which describes the publication sites to be hosted by your server (just one to start); and
-* a directory named after your site (should match journalKey value for your journal), in the themes.tar.gz file, it is called `main/`, you may change it to match your journalKey (or change your journalKey to main)
+* a directory named `main/`, which is the theme for your one site.
 
-You may also change the initial site key in `sites.yaml` to a string that identifies your site.
+There is no significance to the directory name `main/`, you may change it to anything you wish. You may also change the initial site key in `sites.yaml` to a string that identifies your site.
 
 On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
 
