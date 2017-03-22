@@ -71,12 +71,12 @@ Maven is required to compile components of the Ambra stack. Each component can b
 5. Maven (optional)
 
 ### Java 8
-Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
+Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Oracle Java 8 Development Kit (JDK8) is required, will not work with the OpenSDK.
 
 ## Setting Up the Databases
 
 ### MySQL
-Ambra requires a running MySQL server. Ambra should be compatible with the latest version of MySQL.
+Ambra requires a running MySQL server. Ambra should be compatible with the latest version of MySQL. Tested with 5.6.28.
 
 #### Ambra database
 
@@ -131,12 +131,13 @@ Rhino requires two configuration files placed in configuration directory.
 1. `rhino.yaml` ([example](https://plos.github.io/ambraproject/example/rhino.yaml))
 2. `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml))
 
-The files listed above have some required fields - see the example files included in this project.
+The files listed above have some required fields - see the example files included in this project. *Note that due to a known bug, the context.xml file must be in /etc/ambra/context.xml*.
 
 #### Wombat
 
 Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
 `wombat.yaml` has some required fields - see the [example](https://plos.github.io/ambraproject/example/wombat.yaml) file.
+The `path` variable must have an actual path, don't use $HOME.
 
 #### Content Repo
 
@@ -155,9 +156,9 @@ tar -xvzf themes.tar.gz
 This will create a directory named `$HOME/ambra/themes`. It will contain:
 
 * a file named `sites.yaml`, which describes the publication sites to be hosted by your server (just one to start); and
-* a directory named `main/`, which is the theme for your one site.
+* a directory named after your site (should match journalKey value for your journal), in the themes.tar.gz file, it is called `main/`, you may change it to match your journalKey (or change your journalKey to main)
 
-There is no significance to the directory name `main/`, you may change it to anything you wish. You may also change the initial site key in `sites.yaml` to a string that identifies your site.
+You may also change the initial site key in `sites.yaml` to a string that identifies your site.
 
 On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
 
@@ -216,6 +217,8 @@ You may also run each component from Maven. This is where you will set the appli
 1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
 2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
 3. Crepo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
+
+Note: Run these mvn commands from the directory you cloned each project.
 
 ### Viewing the "hello world" page for each component
 
