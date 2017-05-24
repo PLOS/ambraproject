@@ -49,7 +49,7 @@ The Content Repo is an append-only repository of article assets, including the m
 
 # Quickstart using Docker
 
-You can quickly bring up an auto configured Ambra stack very using Docker instead of having to install Java and download all the binaries. [See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).
+You can quickly bring up an auto configured Ambra stack using Docker instead of having to install Java and download all the binaries. [See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).
 
 # Obtaining the binaries
 
