@@ -47,6 +47,10 @@ Rhino is the back-end service for ingesting and storing article content and meta
 
 The Content Repo is an append-only repository of article assets, including the manuscript XML and all images.
 
+# Quickstart using Docker
+
+You can quickly bring up an auto configured Ambra stack very using Docker instead of having to install Java and download all the binaries. [See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).
+
 # Obtaining the binaries
 
 If you have Tomcat installed on your system, you can set up and run Ambra without compiling any code. Download `.war` files from our [Releases page](https://plos.github.io/ambraproject/Releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
