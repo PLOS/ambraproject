@@ -32,6 +32,21 @@ CREATE TABLE `article` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `categoryId` bigint(20) NOT NULL AUTO_INCREMENT,
+  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastModified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`categoryId`),
+  UNIQUE KEY `path` (`path`)
+) ENGINE=InnoDB AUTO_INCREMENT=58400 DEFAULT CHARSET=utf8;
+
+
+--
 -- Table structure for table `articleCategoryAssignment`
 --
 
