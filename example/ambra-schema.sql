@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.16, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1    Database: ambra
+-- Host: localhost    Database: ambra
 -- ------------------------------------------------------
 -- Server version	5.6.16-1~exp1
 
@@ -24,27 +24,12 @@ DROP TABLE IF EXISTS `article`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `article` (
   `articleId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `doi` varchar(150) NOT NULL,
+  `doi` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`articleId`),
   UNIQUE KEY `doi` (`doi`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3977 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `category`
---
-
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category` (
-  `categoryId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastModified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`categoryId`),
-  UNIQUE KEY `path` (`path`)
-) ENGINE=InnoDB AUTO_INCREMENT=58400 DEFAULT CHARSET=utf8;
-
 
 --
 -- Table structure for table `articleCategoryAssignment`
@@ -97,21 +82,22 @@ CREATE TABLE `articleFile` (
   `fileId` bigint(20) NOT NULL AUTO_INCREMENT,
   `ingestionId` bigint(20) NOT NULL,
   `itemId` bigint(20) DEFAULT NULL,
-  `fileType` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `bucketName` varchar(255) NOT NULL,
-  `crepoKey` varchar(255) NOT NULL,
-  `crepoUuid` varchar(36) NOT NULL,
+  `fileType` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bucketName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `crepoKey` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `crepoUuid` varchar(36) COLLATE utf8_unicode_ci NOT NULL,
   `fileSize` bigint(20) NOT NULL,
-  `ingestedFileName` varchar(255) NOT NULL,
+  `ingestedFileName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`fileId`),
   UNIQUE KEY `ingest_ingestedFileName` (`ingestionId`,`ingestedFileName`),
   UNIQUE KEY `crepoUuid_UNIQUE` (`crepoUuid`),
   UNIQUE KEY `ingest_item_filetype` (`ingestionId`,`itemId`,`fileType`),
   KEY `fk_articleFile_2` (`itemId`),
+  KEY `bucketName_index` (`bucketName`),
   CONSTRAINT `fk_articleFile_1` FOREIGN KEY (`ingestionId`) REFERENCES `articleIngestion` (`ingestionId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_articleFile_2` FOREIGN KEY (`itemId`) REFERENCES `articleItem` (`itemId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=223181 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,14 +112,15 @@ CREATE TABLE `articleIngestion` (
   `articleId` bigint(20) NOT NULL,
   `journalId` bigint(20) NOT NULL,
   `ingestionNumber` int(11) NOT NULL,
-  `title` text NOT NULL,
+  `title` text COLLATE utf8_unicode_ci NOT NULL,
   `publicationDate` date NOT NULL,
   `revisionDate` date DEFAULT NULL,
-  `publicationStage` varchar(100) DEFAULT NULL,
-  `articleType` varchar(100) DEFAULT NULL,
+  `publicationStage` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `articleType` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `strikingImageItemId` bigint(20) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastModified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `isPreprintOfDoi` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ingestionId`),
   UNIQUE KEY `article_ingestnum` (`articleId`,`ingestionNumber`),
   KEY `fk_articleIngestion_2` (`journalId`),
@@ -141,7 +128,7 @@ CREATE TABLE `articleIngestion` (
   CONSTRAINT `fk_articleIngestion_1` FOREIGN KEY (`articleId`) REFERENCES `article` (`articleId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_articleIngestion_2` FOREIGN KEY (`journalId`) REFERENCES `journal` (`journalId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_articleIngestion_3` FOREIGN KEY (`strikingImageItemId`) REFERENCES `articleItem` (`itemId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4436 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,14 +141,14 @@ DROP TABLE IF EXISTS `articleItem`;
 CREATE TABLE `articleItem` (
   `itemId` bigint(20) NOT NULL AUTO_INCREMENT,
   `ingestionId` bigint(20) NOT NULL,
-  `doi` varchar(150) NOT NULL,
-  `articleItemType` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `doi` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `articleItemType` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`itemId`),
   KEY `doi` (`doi`),
   KEY `fk_articleItem_1` (`ingestionId`),
   CONSTRAINT `fk_articleItem_1` FOREIGN KEY (`ingestionId`) REFERENCES `articleIngestion` (`ingestionId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=77975 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,17 +160,17 @@ DROP TABLE IF EXISTS `articleList`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `articleList` (
   `articleListId` bigint(20) NOT NULL AUTO_INCREMENT,
-  `listKey` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `displayName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `listKey` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `displayName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `journalId` bigint(20) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastModified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `listType` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `listType` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`articleListId`),
   UNIQUE KEY `listIdentity` (`journalId`,`listType`,`listKey`),
   KEY `journalId` (`journalId`),
   CONSTRAINT `fk_articleList_1` FOREIGN KEY (`journalId`) REFERENCES `journal` (`journalId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +210,7 @@ CREATE TABLE `articleRelationship` (
   KEY `targetArticleId` (`targetArticleId`),
   CONSTRAINT `fk_articleRelationship_1` FOREIGN KEY (`sourceArticleId`) REFERENCES `article` (`articleId`),
   CONSTRAINT `fk_articleRelationship_2` FOREIGN KEY (`targetArticleId`) REFERENCES `article` (`articleId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=355 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +228,24 @@ CREATE TABLE `articleRevision` (
   PRIMARY KEY (`revisionId`),
   KEY `fk_articleRevision_1` (`ingestionId`),
   CONSTRAINT `fk_articleRevision_1` FOREIGN KEY (`ingestionId`) REFERENCES `articleIngestion` (`ingestionId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4403 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `categoryId` bigint(20) NOT NULL AUTO_INCREMENT,
+  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastModified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`categoryId`),
+  UNIQUE KEY `path` (`path`)
+) ENGINE=InnoDB AUTO_INCREMENT=58456 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +260,7 @@ CREATE TABLE `comment` (
   `commentURI` varchar(250) CHARACTER SET utf8 NOT NULL,
   `articleId` bigint(20) NOT NULL,
   `parentId` bigint(20) DEFAULT NULL,
-  `userProfileId` bigint(20) NOT NULL,
+  `userProfileId` bigint(20) DEFAULT NULL,
   `title` mediumtext COLLATE utf8_unicode_ci,
   `body` mediumtext COLLATE utf8_unicode_ci,
   `competingInterestBody` mediumtext COLLATE utf8_unicode_ci,
@@ -264,6 +268,8 @@ CREATE TABLE `comment` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastModified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `isRemoved` bit(1) DEFAULT b'0',
+  `authorEmailAddress` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `authorName` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`commentId`),
   UNIQUE KEY `commentURI` (`commentURI`),
   KEY `fk_comment_1` (`articleId`),
@@ -271,7 +277,7 @@ CREATE TABLE `comment` (
   KEY `userProfileID` (`userProfileId`),
   CONSTRAINT `fk_comment_1` FOREIGN KEY (`articleId`) REFERENCES `article` (`articleId`),
   CONSTRAINT `fk_comment_2` FOREIGN KEY (`parentId`) REFERENCES `comment` (`commentId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +290,7 @@ DROP TABLE IF EXISTS `commentFlag`;
 CREATE TABLE `commentFlag` (
   `commentFlagId` bigint(20) NOT NULL AUTO_INCREMENT,
   `commentId` bigint(20) NOT NULL,
-  `userProfileId` bigint(20) NOT NULL,
+  `userProfileId` bigint(20) DEFAULT NULL,
   `reason` varchar(25) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `comment` text CHARACTER SET utf8 COLLATE utf8_bin,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -293,7 +299,7 @@ CREATE TABLE `commentFlag` (
   KEY `commentId` (`commentId`),
   KEY `userProfileId` (`userProfileId`),
   CONSTRAINT `fk_commentFlag_1` FOREIGN KEY (`commentId`) REFERENCES `comment` (`commentId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,7 +324,7 @@ CREATE TABLE `issue` (
   KEY `fk_issue_2` (`imageArticleId`),
   CONSTRAINT `fk_issue_1` FOREIGN KEY (`volumeId`) REFERENCES `volume` (`volumeId`),
   CONSTRAINT `fk_issue_2` FOREIGN KEY (`imageArticleId`) REFERENCES `article` (`articleId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -357,7 +363,7 @@ CREATE TABLE `journal` (
   PRIMARY KEY (`journalId`),
   KEY `journal_ibfk_1_idx` (`currentIssueId`),
   CONSTRAINT `fk_journal_1` FOREIGN KEY (`currentIssueId`) REFERENCES `issue` (`issueId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,7 +386,7 @@ CREATE TABLE `syndication` (
   PRIMARY KEY (`syndicationId`),
   UNIQUE KEY `revisionId` (`revisionId`,`targetQueue`),
   CONSTRAINT `fk_syndication_1` FOREIGN KEY (`revisionId`) REFERENCES `articleRevision` (`revisionId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,7 +426,7 @@ CREATE TABLE `volume` (
   UNIQUE KEY `doi` (`doi`),
   KEY `journalID` (`journalId`),
   CONSTRAINT `fk_volume_1` FOREIGN KEY (`journalId`) REFERENCES `journal` (`journalId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -432,4 +438,4 @@ CREATE TABLE `volume` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-25 11:16:02
+-- Dump completed on 2018-01-31 16:32:08
