@@ -69,13 +69,16 @@ Maven is required to compile components of the Ambra stack. Each component can b
 
 ### Overview
 1. Java 8
-2. MySQL
-3. Tomcat
+2. Tomcat
+3. MySQL
 4. Solr (optional)
 5. Maven (optional)
 
 ### Java 8
 Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
+
+### Tomcat
+Ambra has been tested with Tomcat 7.
 
 ## Setting Up the Databases
 
