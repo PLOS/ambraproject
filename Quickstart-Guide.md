@@ -18,7 +18,7 @@ These instructions are targeted at Linux and iOS systems. We have not tried to i
 1. [Walkthrough of the Ambra core components](#walkthrough-of-the-ambra-core-components)
     1. [Wombat](#wombat)
     2. [Rhino](#rhino)
-    3. [Content Repo](#content-repo-crepo)
+    3. [Content Repo](#content-repo)
 2. [Obtaining the binaries](#obtaining-the-binaries)
 3. [System setup](#system-setup)
     1. [Requirements](#requirements)
@@ -43,7 +43,7 @@ Wombat is the front-end component of the publishing platform. Wombat is a web ap
 
 Rhino is the back-end service for ingesting and storing article content and metadata. Rhino provides an API to create, read, update, and delete articles and associated data.
 
-## Content Repo (CRepo)
+## Content Repo
 
 The Content Repo is an append-only repository of article assets, including the manuscript XML and all images.
 
@@ -78,13 +78,13 @@ Maven is required to compile components of the Ambra stack. Each component can b
 Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
 
 ### Tomcat
-Ambra has been tested with Tomcat 7.
+Ambra has been tested with Tomcat 7 and should be compatible with the latest Tomcat.
 
-## Setting Up the Databases
 
 ### MySQL
-Ambra requires a running MySQL server. Ambra should be compatible with the latest version of MySQL. Tested with 5.6.28.
+Ambra requires a running MySQL server. It has been tested with version 5.6.28 and should be compatible with the latest version of MySQL.
 
+## Setting Up the Databases
 #### Ambra database
 
 ```bash
@@ -92,21 +92,21 @@ mysql -uroot -e "DROP DATABASE IF EXISTS ambra;"
 mysql -uroot -e "CREATE DATABASE ambra;"
 ```
 
-Download the Ambra schema ([`ambra-schema.sql`](https://plos.github.io/ambraproject/example/ambra-schema.sql)) and import it into the `ambra` database. For example:
+Download the Ambra schema ([`ambra-schema.sql`](https://plos.github.io/ambraproject/example/ambra-schema.sql)) and import it into the `ambra` database:
 
 ```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -p ambra < ambra-schema.sql
 ```
 
-Add a journal to the database. For example:
+Add a journal to the database:
 
 ```sql
 INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My Journal", "0000-0000");
 ```
 
-* The field `journalKey` is an identifier used in config files. It must match the key configured in `journal.yaml` ([see below](#themes-configuration)).
-* The field `title` is the reader-facing display form of the title.
-* The field `eissn` is the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). It must match the e-ISSN for articles ingested into the system (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). On a toy system, use a dummy value such as `0000-0000`.
+* `journalKey` - an identifier used in config files. It must match the key configured in `journal.yaml` ([see below](#themes-configuration)).
+* `title` - the reader-facing display form of the title.
+* `eissn` - the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). It must match the e-ISSN for articles ingested into the system (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). On a toy system, use a dummy value such as `0000-0000`.
 
 #### Content Repo database
 
@@ -115,7 +115,7 @@ mysql -uroot -e "DROP DATABASE IF EXISTS repo;"
 mysql -uroot -e "CREATE DATABASE repo;"
 ```
 
-Download the Content Repo schema ([`content-repo-schema.sql`](https://plos.github.io/ambraproject/example/content-repo-schema.sql)) and import it into the `repo` database. For example:
+Download the Content Repo schema ([`content-repo-schema.sql`](https://plos.github.io/ambraproject/example/content-repo-schema.sql)) and import it into the `repo` database:
 
 ```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -p repo < content-repo-schema.sql
@@ -129,13 +129,13 @@ INSERT INTO buckets (`bucketName`) VALUES ("corpus");
 
 ### Directories
 
-You will need to create a configuration directory and a directory to hold files in CRepo's datastore.
+You will need to create a configuration directory and a directory to hold files in Content Repo's datastore.
 
 On a toy system, a recommended setup is:
 
 ```bash
   mkdir $HOME/ambra
-  mkdir $HOME/ambra/crepo_datastore  # CRepo datastore directory
+  mkdir $HOME/ambra/crepo_datastore  # Content Repo datastore directory
   mkdir $HOME/ambra/config           # configuration directory
 ```
 
@@ -154,13 +154,12 @@ The files listed above have some required fields - see the example files include
 
 #### Wombat
 
-Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields - see the [example](https://plos.github.io/ambraproject/example/wombat.yaml) file.
+Wombat requires a configuration file named `wombat.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml)) placed in the configuration directory. It has some required fields.
 The `path` variable must have an actual path, don't use $HOME.
 
 #### Content Repo
 
-In addition to the Rhino configuration, the `context.xml` in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store. See the [example](https://plos.github.io/ambraproject/example/context.xml) file.
+In addition to the Rhino configuration, the `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml)) in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store.
 
 ## Setting up a theme directory
 
@@ -207,7 +206,7 @@ This overrides the file found in Wombat's source code at
 src/main/webapp/WEB-INF/themes/root/config/journal.yaml
 ```
 
-There are two required fields: `journalKey` and `journalName`. [See an example.](https://plos.github.io/ambraproject/example/journal.yaml)
+There are two required fields: `journalKey` and `journalName`. ([example](https://plos.github.io/ambraproject/example/journal.yaml))
 
 Other config files control the application's behavior in other ways; `journal.yaml` is the only mandatory override. They are documented by the root files in Wombat's source code, which you may override individually.
 
@@ -235,7 +234,7 @@ You may also run each component from Maven. This is where you will set the appli
 
 1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
 2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
-3. Crepo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
+3. Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
 
 Note: Run these mvn commands from the directory you cloned each project.
 
@@ -244,7 +243,7 @@ Note: Run these mvn commands from the directory you cloned each project.
 Go to `http://localhost:<PORT>` to view the root page for each application.
 
 1. Rhino: Swagger API interface
-2. CRepo: Swagger API interface
+2. Content Repo: Swagger API interface
 3. Wombat: Debug or root page
 
 ## Ingesting an article
