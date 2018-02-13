@@ -112,6 +112,18 @@ mysql -uroot -e "DROP DATABASE IF EXISTS repo;"
 mysql -uroot -e "CREATE DATABASE repo;"
 ```
 
+Download the Content Repo schema ([`content-repo-schema.sql`](https://plos.github.io/ambraproject/example/content-repo-schema.sql)) and import it into the `repo` database. For example:
+
+```bash
+mysql -h 127.0.0.1 -P 3306 -uroot -p repo < content-repo-schema.sql
+```
+
+Add a bucket named "corpus" to the database.
+
+```sql
+INSERT INTO buckets (`bucketName`) VALUES ("corpus");
+```
+
 ### Directories
 
 You will need to create a configuration directory and a directory to hold files in CRepo's datastore.
