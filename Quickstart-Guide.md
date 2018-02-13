@@ -105,9 +105,9 @@ Add a journal to the database:
 INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My Journal", "0000-0000");
 ```
 
-* `journalKey` - an identifier used in config files. It must match the key configured in `journal.yaml` ([see below](#themes-configuration)).
-* `title` - the reader-facing display form of the title.
-* `eissn` - the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). It must match the e-ISSN for articles ingested into the system (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). On a toy system, use a dummy value such as `0000-0000`.
+* `journalKey` - an identifier used in config files
+* `title` - the journal title
+* `eissn` - the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). Articles identify the journal to which they are added by e-ISSN (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). For the sample database we will use a dummy value: `0000-0000`.
 
 #### Content Repo database
 
@@ -134,8 +134,6 @@ INSERT INTO buckets (`bucketName`) VALUES ("corpus");
 Create the following directories:
 - a directory to hold configuration files
 - a directory to hold files in the Content Repo's datastore
-
-On a toy system, a recommended setup is:
 
 ```bash
   mkdir $HOME/ambra
@@ -172,7 +170,7 @@ tar -xvzf themes.tar.gz
 ```
 
 
-## Deploying the artifacts to Tomcat
+## Deploying the applications to Tomcat
 
 If you have downloaded or compiled `.war` files, you may deploy them to a Tomcat instance as normal. (Consult the Tomcat documentation for details.)
 
