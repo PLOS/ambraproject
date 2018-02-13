@@ -85,6 +85,7 @@ Ambra has been tested with Tomcat 7 and should be compatible with the latest Tom
 Ambra requires a running MySQL server. It has been tested with version 5.6.28 and should be compatible with the latest version of MySQL.
 
 ## Setting Up the Databases
+
 #### Ambra database
 
 ```bash
@@ -127,39 +128,40 @@ Add a bucket named "corpus" to the database.
 INSERT INTO buckets (`bucketName`) VALUES ("corpus");
 ```
 
+## Setting Up Configuration
 ### Directories
 
-You will need to create a configuration directory and a directory to hold files in Content Repo's datastore.
+Create the following directories:
+- a directory to hold configuration files
+- a directory to hold files in the Content Repo's datastore
 
 On a toy system, a recommended setup is:
 
 ```bash
   mkdir $HOME/ambra
-  mkdir $HOME/ambra/crepo_datastore  # Content Repo datastore directory
   mkdir $HOME/ambra/config           # configuration directory
+  mkdir $HOME/ambra/crepo_datastore  # Content Repo datastore directory
 ```
 
 On a production system, `/etc/ambra` is recommended for the configuration directory.
 
 ### Configuration files
 
+#### Shared
+Rhino, Wombat, and Content Repo all run on Tomcat. For this quick start they will all run on the same Tomcat server and they will share the same `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml)).  Place this file in the configuration directory you created above.
+
 #### Rhino
-
-Rhino requires two configuration files placed in configuration directory.
-
-1. `rhino.yaml` ([example](https://plos.github.io/ambraproject/example/rhino.yaml))
-2. `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml))
-
-The files listed above have some required fields - see the example files included in this project. *Note that due to a known bug, the context.xml file must be in /etc/ambra/context.xml*.
-
-#### Wombat
-
-Wombat requires a configuration file named `wombat.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml)) placed in the configuration directory. It has some required fields.
-The `path` variable must have an actual path, don't use $HOME.
+Rhino requires it's own configuration file placed in the configuration directory:
+`rhino.yaml` ([example](https://plos.github.io/ambraproject/example/rhino.yaml)).
+It has some required fields.
 
 #### Content Repo
+The shared `context.xml` in your configuration directory must contain a path to the Content Repo data store.
 
-In addition to the Rhino configuration, the `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml)) in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store.
+#### Wombat
+Wombat requires it's own configuration file placed in the configuration directory: `wombat.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml)).
+It has some required fields.
+The `path` variable must have an actual path, don't use $HOME.
 
 ## Setting up a theme directory
 
