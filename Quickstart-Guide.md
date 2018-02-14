@@ -73,14 +73,12 @@ You can check out the source code and compile the `.war` files. Follow the quick
 1. Java 8
 2. Tomcat
 3. MySQL
-4. Solr (optional)
 
 ### Java 8
 Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
 
 ### Tomcat
 Ambra has been tested with Tomcat 7 and should be compatible with the latest Tomcat.
-
 
 ### MySQL
 Ambra requires a running MySQL server. It has been tested with version 5.6.28 and should be compatible with the latest version of MySQL.
