@@ -159,7 +159,7 @@ The shared `context.xml` in your configuration directory must contain a path to 
 Wombat requires it's own configuration file placed in the configuration directory: `wombat.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml)).
 It has some required fields.
 
-Wombat can be themed and will not start without having a theme installed.  Create the theme by downloading and extracting the following archive [`themes.tar.gz`](https://plos.github.io/ambraproject/example/themes.tar.gz).
+Wombat can be themed and requires a default theme to be present.  Create the theme by downloading and extracting the following archive [`themes.tar.gz`](https://plos.github.io/ambraproject/example/themes.tar.gz).
 
 ```bash
 cd $HOME/ambra/
