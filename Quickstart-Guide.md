@@ -160,7 +160,6 @@ The shared `context.xml` in your configuration directory must contain a path to 
 #### Wombat
 Wombat requires it's own configuration file placed in the configuration directory: `wombat.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml)).
 It has some required fields.
-The `path` variable must have an actual path, don't use $HOME.
 
 Wombat can be themed and will not start without having a theme installed.  Create the theme by downloading and extracting the following archive [`themes.tar.gz`](https://plos.github.io/ambraproject/example/themes.tar.gz).
 
@@ -168,6 +167,12 @@ Wombat can be themed and will not start without having a theme installed.  Creat
 cd $HOME/ambra/
 wget https://plos.github.io/ambraproject/example/themes.tar.gz
 tar -xvzf themes.tar.gz
+```
+
+Edit `/etc/ambra/wombat.yaml` and replace $HOME with the actual path to your home directory:
+```bash
+cd $HOME
+pwd # This prints the path to your home directory. Edit the file /etc/ambra/wombat.yaml and replace $HOME with this path.  
 ```
 
 
