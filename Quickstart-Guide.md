@@ -19,7 +19,7 @@ These instructions are targeted at Linux and iOS systems. We have not tried to i
     1. [Wombat](#wombat)
     2. [Rhino](#rhino)
     3. [Content Repo](#content-repo)
-2. [Obtaining the binaries](#obtaining-the-binaries)
+2. [Obtaining the Applications](#obtaining-the-applications)
 3. [System setup](#system-setup)
     1. [Requirements](#requirements)
     2. [Setting up the databases](#setting-up-the-databases)
@@ -47,21 +47,23 @@ Rhino is the back-end service for ingesting and storing article content and meta
 
 The Content Repo is an append-only repository of article assets, including the manuscript XML and all images.
 
-# Quickstart using Docker
+# Obtaining the Applications
+## Download the latest releases
 
-You can quickly bring up an auto configured Ambra stack using Docker instead of having to install Java and download all the binaries. [See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).
+You can run Ambra in Tomcat without compiling any code.  Download latest releases:
+- [Wombat](https://plos.github.io/ambraproject/Releases.html#wombat)
+- [Rhino](https://plos.github.io/ambraproject/Releases.html#rhino)
+- [Content Repo](https://plos.github.io/ambraproject/Releases.html#content-repo)
 
-# Obtaining the binaries
-
-If you have Tomcat installed on your system, you can set up and run Ambra without compiling any code. Download `.war` files from our [Releases page](https://plos.github.io/ambraproject/Releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
-
-You can also check out the source code and compile the `.war` artifacts for youself. The source code repositories are located at:
+## Alternative: Run the source code
+You can check out the source code and compile the `.war` files. Follow the quick start guide and run the applications with Maven instead of deploying the web app to Tomcat.  The source repositories are here:
 
 * [Wombat](https://github.com/PLOS/wombat.git)
 * [Rhino](https://github.com/PLOS/rhino.git)
 * [Content Repo](https://github.com/PLOS/content-repo.git)
 
-Maven is required to compile components of the Ambra stack. Each component can be compiled by executing `mvn install` from the checked-out directory.
+## Alternative: Docker
+[See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).  You can quickly bring up an auto-configured Ambra stack using Docker instead of having to follow this quickstart guide.
 
 # System setup
 
@@ -72,7 +74,6 @@ Maven is required to compile components of the Ambra stack. Each component can b
 2. Tomcat
 3. MySQL
 4. Solr (optional)
-5. Maven (optional)
 
 ### Java 8
 Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
@@ -170,25 +171,25 @@ tar -xvzf themes.tar.gz
 ```
 
 
-## Deploying the applications to Tomcat
+## Running the applications
 
-If you have downloaded or compiled `.war` files, you may deploy them to a Tomcat instance as normal. (Consult the Tomcat documentation for details.)
+You should be familiar with how to deploy a webapp to Tomcat. Typically, `.war` files are simply copied into Tomcat's `webapps` directory and Tomcat will start the webapp automatically.
 
-You may also run each component from Maven. This is where you will set the application port as well as define the configuration directory:
+### Alternative: Running the application from source code with Maven
+Use Maven to run the applications from source. For each respective app you must be in the checked-out repository directory.
+1. Compile the app: `mvn install`
+2. Run the app:
+   1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
+   2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
+   3. Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
 
-1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
-2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
-3. Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
-
-Note: Run these mvn commands from the directory you cloned each project.
-
-### Viewing the "hello world" page for each component
+## Viewing the "hello world" page for each component
 
 Go to `http://localhost:<PORT>` to view the root page for each application.
 
-1. Rhino: Swagger API interface
-2. Content Repo: Swagger API interface
-3. Wombat: Debug or root page
+1. Wombat: You should see an introductory web page at `http://localhost:8080`
+2. Rhino: You should see a Swagger API interface at `http://localhost:8082`
+3. Content Repo: You should see a Swagger API interface at `http://localhost:8081`
 
 ## Ingesting an article
 
