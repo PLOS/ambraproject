@@ -29,8 +29,8 @@ These instructions are targeted at Linux and iOS systems. We have not tried to i
     1. [Theme Overrides](#theme-overrides)
     2. [Journal Configuration](#journal-configuration)
     3. [Homepage Customization](#homepage-customization)
-5. [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat)
-    1. [Viewing the "hello world" page for each component](#viewing-the-hello-world-page-for-each-component)
+5. [Running the Application](#running-the-application)
+    1. [Confirming that the application is running](#confirming-that-the-application-is-running)
 6. [Ingesting an article](#ingesting-an-article)
 
 # Walkthrough of the Ambra core components
@@ -48,21 +48,21 @@ Rhino is the back-end service for ingesting and storing article content and meta
 The Content Repo is an append-only repository of article assets, including the manuscript XML and all images.
 
 # Obtaining the Applications
-## Download the latest releases
-
-You can run Ambra in Tomcat without compiling any code.  Download latest releases:
-- [Wombat](https://plos.github.io/ambraproject/Releases.html#wombat)
-- [Rhino](https://plos.github.io/ambraproject/Releases.html#rhino)
-- [Content Repo](https://plos.github.io/ambraproject/Releases.html#content-repo)
-
-## Alternative: Run the source code
-You can check out the source code and compile the `.war` files. Follow the quick start guide and run the applications with Maven instead of deploying the web app to Tomcat.  The source repositories are here:
+## Download the source code
+You can check out the source code and run the applications with Tomcat and Maven. The source repositories are here:
 
 * [Wombat](https://github.com/PLOS/wombat.git)
 * [Rhino](https://github.com/PLOS/rhino.git)
 * [Content Repo](https://github.com/PLOS/content-repo.git)
 
-## Alternative: Docker
+### Alternative: Download the latest releases
+
+You can deploy Ambra in Tomcat without compiling the source code.  Download latest releases:
+- [Wombat](https://plos.github.io/ambraproject/Releases.html#wombat)
+- [Rhino](https://plos.github.io/ambraproject/Releases.html#rhino)
+- [Content Repo](https://plos.github.io/ambraproject/Releases.html#content-repo)
+
+### Alternative: Docker
 [See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).  You can quickly bring up an auto-configured Ambra stack using Docker instead of having to follow this quickstart guide.
 
 # System setup
@@ -174,25 +174,25 @@ pwd # This prints the path to your home directory. Edit the file /etc/ambra/womb
 ```
 
 
-## Running the applications
-
-You should be familiar with how to deploy a webapp to Tomcat. Typically, `.war` files are simply copied into Tomcat's `webapps` directory and Tomcat will start the webapp automatically.
-
-### Alternative: Running the application from source code with Maven
+# Running the Application
+## Running the application from source code with Maven
 Use Maven to run the applications from source. For each respective app you must be in the checked-out repository directory.
 1. Compile the app: `mvn install`
 2. Run the app:
-   1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
-   2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
-   3. Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
+- Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
+- Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
+- Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
 
-## Viewing the "hello world" page for each component
+### Alternative: Deploying the latest release to Tomcat
+You should be familiar with how to deploy a webapp to Tomcat. Typically, `.war` files are simply copied into Tomcat's `webapps` directory and Tomcat will start the webapp automatically.
+
+## Confirming that the application is running
 
 Go to `http://localhost:<PORT>` to view the root page for each application.
 
-1. Wombat: You should see an introductory web page at `http://localhost:8080`
-2. Rhino: You should see a Swagger API interface at `http://localhost:8082`
-3. Content Repo: You should see a Swagger API interface at `http://localhost:8081`
+- Wombat: You should see an introductory web page at `http://localhost:8080`
+- Rhino: You should see a Swagger API interface at `http://localhost:8082`
+- Content Repo: You should see a Swagger API interface at `http://localhost:8081`
 
 ## Ingesting an article
 
