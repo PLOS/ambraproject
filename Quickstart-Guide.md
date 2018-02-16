@@ -104,7 +104,7 @@ Add a journal to the database:
 INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My Journal", "0000-0000");
 ```
 
-* `journalKey` - an identifier used in config files
+* `journalKey` - an identifier used in config files. A theme is set for a journal by setting `journalKey` in `journal.yaml`. See [Themes Quickstart](themes-customizing.html) for more on themes.
 * `title` - the journal title
 * `eissn` - the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). Articles identify the journal to which they are added by e-ISSN (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). For the sample database we will use a dummy value: `0000-0000`.
 
