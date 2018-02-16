@@ -18,19 +18,15 @@ These instructions are targeted at Linux and iOS systems. We have not tried to i
 1. [Walkthrough of the Ambra core components](#walkthrough-of-the-ambra-core-components)
     1. [Wombat](#wombat)
     2. [Rhino](#rhino)
-    3. [Content Repo](#content-repo-crepo)
-2. [Obtaining the binaries](#obtaining-the-binaries)
+    3. [Content Repo](#content-repo)
+2. [Obtaining the Applications](#obtaining-the-applications)
 3. [System setup](#system-setup)
     1. [Requirements](#requirements)
     2. [Setting up the databases](#setting-up-the-databases)
     3. [Directories](#directories)
     4. [Configuration files](#configuration-files)
-4. [Setting up a theme directory](#setting-up-a-theme-directory)
-    1. [Theme Overrides](#theme-overrides)
-    2. [Journal Configuration](#journal-configuration)
-    3. [Homepage Customization](#homepage-customization)
-5. [Deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat)
-    1. [Viewing the "hello world" page for each component](#viewing-the-hello-world-page-for-each-component)
+4. [Running the Application](#running-the-application)
+5. [Confirming that the application is running](#confirming-that-the-application-is-running)
 6. [Ingesting an article](#ingesting-an-article)
 
 # Walkthrough of the Ambra core components
@@ -43,25 +39,27 @@ Wombat is the front-end component of the publishing platform. Wombat is a web ap
 
 Rhino is the back-end service for ingesting and storing article content and metadata. Rhino provides an API to create, read, update, and delete articles and associated data.
 
-## Content Repo (CRepo)
+## Content Repo
 
 The Content Repo is an append-only repository of article assets, including the manuscript XML and all images.
 
-# Quickstart using Docker
-
-You can quickly bring up an auto configured Ambra stack using Docker instead of having to install Java and download all the binaries. [See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).
-
-# Obtaining the binaries
-
-If you have Tomcat installed on your system, you can set up and run Ambra without compiling any code. Download `.war` files from our [Releases page](https://plos.github.io/ambraproject/Releases.html), and follow the instructions for [deploying the artifacts to Tomcat](#deploying-the-artifacts-to-tomcat).
-
-You can also check out the source code and compile the `.war` artifacts for youself. The source code repositories are located at:
+# Obtaining the Applications
+## Download the source code
+You can check out the source code and run the applications with Tomcat and Maven. The source repositories are here:
 
 * [Wombat](https://github.com/PLOS/wombat.git)
 * [Rhino](https://github.com/PLOS/rhino.git)
 * [Content Repo](https://github.com/PLOS/content-repo.git)
 
-Maven is required to compile components of the Ambra stack. Each component can be compiled by executing `mvn install` from the checked-out directory.
+### Alternative: Download the latest releases
+
+You can deploy Ambra in Tomcat without compiling the source code.  Download latest releases:
+- [Wombat](https://plos.github.io/ambraproject/Releases.html#wombat)
+- [Rhino](https://plos.github.io/ambraproject/Releases.html#rhino)
+- [Content Repo](https://plos.github.io/ambraproject/Releases.html#content-repo)
+
+### Alternative: Docker
+[See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).  You can quickly bring up an auto-configured Ambra stack using Docker instead of having to follow this quickstart guide.
 
 # System setup
 
@@ -69,18 +67,19 @@ Maven is required to compile components of the Ambra stack. Each component can b
 
 ### Overview
 1. Java 8
-2. MySQL
-3. Tomcat
-4. Solr (optional)
-5. Maven (optional)
+2. Tomcat
+3. MySQL
 
 ### Java 8
 Your runtime environment must support Java 8 or later. To develop and compile the webapps, the Java 8 Development Kit (JDK8) is required.
 
-## Setting Up the Databases
+### Tomcat
+Ambra has been tested with Tomcat 7 and should be compatible with the latest Tomcat.
 
 ### MySQL
-Ambra requires a running MySQL server. Ambra should be compatible with the latest version of MySQL. Tested with 5.6.28.
+Ambra requires a running MySQL server. It has been tested with version 5.6.28 and should be compatible with the latest version of MySQL.
+
+## Setting Up the Databases
 
 #### Ambra database
 
@@ -89,21 +88,21 @@ mysql -uroot -e "DROP DATABASE IF EXISTS ambra;"
 mysql -uroot -e "CREATE DATABASE ambra;"
 ```
 
-Download the Ambra schema ([`ambra-schema.sql`](https://plos.github.io/ambraproject/example/ambra-schema.sql)) and import it into the `ambra` database. For example:
+Download the Ambra schema ([`ambra-schema.sql`](https://plos.github.io/ambraproject/example/ambra-schema.sql)) and import it into the `ambra` database:
 
 ```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -p ambra < ambra-schema.sql
 ```
 
-Add a journal to the database. For example:
+Add a journal to the database:
 
 ```sql
 INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My Journal", "0000-0000");
 ```
 
-* The field `journalKey` is an identifier used in config files. It must match the key configured in `journal.yaml` ([see below](#themes-configuration)).
-* The field `title` is the reader-facing display form of the title.
-* The field `eissn` is the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). It must match the e-ISSN for articles ingested into the system (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). On a toy system, use a dummy value such as `0000-0000`.
+* `journalKey` - an identifier used in config files. A theme is set for a journal by setting `journalKey` in `journal.yaml`. For more on themes see the [Themes Quickstart](themes-customizing.html).
+* `title` - the journal title
+* `eissn` - the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). Articles identify the journal to which they are added by e-ISSN (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). For the sample database we will use a dummy value: `0000-0000`.
 
 #### Content Repo database
 
@@ -112,44 +111,51 @@ mysql -uroot -e "DROP DATABASE IF EXISTS repo;"
 mysql -uroot -e "CREATE DATABASE repo;"
 ```
 
+Download the Content Repo schema ([`content-repo-schema.sql`](https://plos.github.io/ambraproject/example/content-repo-schema.sql)) and import it into the `repo` database:
+
+```bash
+mysql -h 127.0.0.1 -P 3306 -uroot -p repo < content-repo-schema.sql
+```
+
+Add a bucket named "corpus" to the database.
+
+```sql
+INSERT INTO buckets (`bucketName`) VALUES ("corpus");
+```
+
+## Setting Up Configuration
 ### Directories
 
-You will need to create a configuration directory and a directory to hold files in CRepo's datastore.
-
-On a toy system, a recommended setup is:
+Create the following directories:
+- a directory to hold configuration files
+- a directory to hold files in the Content Repo's datastore
 
 ```bash
   mkdir $HOME/ambra
-  mkdir $HOME/ambra/crepo_datastore  # CRepo datastore directory
   mkdir $HOME/ambra/config           # configuration directory
+  mkdir $HOME/ambra/crepo_datastore  # Content Repo datastore directory
 ```
 
 On a production system, `/etc/ambra` is recommended for the configuration directory.
 
 ### Configuration files
 
+#### Shared
+Rhino, Wombat, and Content Repo all run on Tomcat. For this quick start they will all run on the same Tomcat server and they will share the same `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml)).  Place this file in the configuration directory you created above.
+
 #### Rhino
-
-Rhino requires two configuration files placed in configuration directory.
-
-1. `rhino.yaml` ([example](https://plos.github.io/ambraproject/example/rhino.yaml))
-2. `context.xml` ([example](https://plos.github.io/ambraproject/example/context.xml))
-
-The files listed above have some required fields - see the example files included in this project. *Note that due to a known bug, the context.xml file must be in /etc/ambra/context.xml*.
-
-#### Wombat
-
-Wombat requires a configuration file named `wombat.yaml` placed in the configuration directory.
-`wombat.yaml` has some required fields - see the [example](https://plos.github.io/ambraproject/example/wombat.yaml) file.
-The `path` variable must have an actual path, don't use $HOME.
+Rhino requires it's own configuration file placed in the configuration directory:
+`rhino.yaml` ([example](https://plos.github.io/ambraproject/example/rhino.yaml)).
+It has some required fields.
 
 #### Content Repo
+The shared `context.xml` in your configuration directory must contain a path to the Content Repo data store.
 
-In addition to the Rhino configuration, the `context.xml` in your configuration directory must also be configured to provide Content Repo with a directory to use as its data store. See the [example](https://plos.github.io/ambraproject/example/context.xml) file.
+#### Wombat
+Wombat requires it's own configuration file placed in the configuration directory: `wombat.yaml` ([example](https://plos.github.io/ambraproject/example/wombat.yaml)).
+It has some required fields.
 
-## Setting up a theme directory
-
-Create a new directory to house your site's theme configuration. The easiest way to create this directory is to explode the starter [`themes.tar.gz`](https://plos.github.io/ambraproject/example/themes.tar.gz) archive. For example, if you are using a `$HOME/ambra` directory as in the example above, then do
+Wombat can be themed and requires a default theme to be present.  Create the theme by downloading and extracting the following archive [`themes.tar.gz`](https://plos.github.io/ambraproject/example/themes.tar.gz).
 
 ```bash
 cd $HOME/ambra/
@@ -157,80 +163,33 @@ wget https://plos.github.io/ambraproject/example/themes.tar.gz
 tar -xvzf themes.tar.gz
 ```
 
-This will create a directory named `$HOME/ambra/themes`. It will contain:
-
-* a file named `sites.yaml`, which describes the publication sites to be hosted by your server (just one to start); and
-* a directory named `main/`, which is the theme for your one site.
-
-There is no significance to the directory name `main/`, you may change it to anything you wish. You may also change the initial site key in `sites.yaml` to a string that identifies your site.
-
-On a production system, `/var/themes` is recommended instead of `$HOME/ambra/themes`.
-
-### Theme Overrides
-
-Every Freemarker Template, configuration, and resource file in Wombat can be overridden in your theme. This allows you to customize your site.
-
-Wombat's built-in themes are located in its source code at
-
-* `src/main/webapp/WEB-INF/themes/root`
-* `src/main/webapp/WEB-INF/themes/desktop`
-* `src/main/webapp/WEB-INF/themes/mobile`
-
-You may [explore these directories](https://github.com/PLOS/wombat/tree/master/src/main/webapp/WEB-INF/themes) to find templates and configuration files that you can override. Two examples follow.
-
-#### Journal Configuration
-
-A theme requires a file named `journal.yaml` placed in the `config` directory at the theme path. For example:
-
-```
-$HOME/ambra/themes/main/config/journal.yaml
+Edit `/etc/ambra/wombat.yaml` and replace $HOME with the actual path to your home directory:
+```bash
+cd $HOME
+pwd # This prints the path to your home directory. Edit the file /etc/ambra/wombat.yaml and replace $HOME with this path.  
 ```
 
-This overrides the file found in Wombat's source code at
+For more on themes see the [Themes Quickstart](themes-customizing.html) and [Working with PLOS's Themes ](themes-documenation.html).
 
-```
-src/main/webapp/WEB-INF/themes/root/config/journal.yaml
-```
+# Running the Application
+## Running the application from source code with Maven
+Use Maven to run the applications from source. For each respective app you must be in the checked-out repository directory.
+1. Compile the app: `mvn install`
+2. Run the app:
+- Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
+- Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
+- Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
 
-There are two required fields: `journalKey` and `journalName`. [See an example.](https://plos.github.io/ambraproject/example/journal.yaml)
+### Alternative: Deploying the latest release to Tomcat
+You should be familiar with how to deploy a webapp to Tomcat. Typically, `.war` files are simply copied into Tomcat's `webapps` directory and Tomcat will start the webapp automatically.
 
-Other config files control the application's behavior in other ways; `journal.yaml` is the only mandatory override. They are documented by the root files in Wombat's source code, which you may override individually.
-
-#### Homepage Customization
-
-You can get started by setting your homepage content with a theme override. The homepage body is defined by the theme file at `ftl/home/body.ftl`. Create a file at this path in your theme; for example:
-
-```
-$HOME/ambra/themes/main/ftl/home/body.ftl
-```
-
-Edit it to fill in the HTML or FreeMarker code for your homepage content.
-
-To define new resources to use in your homepage, such as images or CSS files, place the files at the `resource` theme path (e.g., `$HOME/ambra/themes/main/resource/`). Any files placed here can be linked at the `resource/` path, relative to your homepage URL. For example, you could create an image named `$HOME/ambra/themes/main/resource/banner.jpg` and then link to it from your homepage with
-
-```html
-<img src="resource/banner.jpg" />
-```
-
-## Deploying the artifacts to Tomcat
-
-If you have downloaded or compiled `.war` files, you may deploy them to a Tomcat instance as normal. (Consult the Tomcat documentation for details.)
-
-You may also run each component from Maven. This is where you will set the application port as well as define the configuration directory:
-
-1. Wombat: `mvn tomcat6:run -Dmaven.tomcat.port=8080 -Dwombat.configDir=/etc/ambra`
-2. Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
-3. Crepo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
-
-Note: Run these mvn commands from the directory you cloned each project.
-
-### Viewing the "hello world" page for each component
+## Confirming that the application is running
 
 Go to `http://localhost:<PORT>` to view the root page for each application.
 
-1. Rhino: Swagger API interface
-2. CRepo: Swagger API interface
-3. Wombat: Debug or root page
+- Wombat: You should see an introductory web page at `http://localhost:8080`
+- Rhino: You should see a Swagger API interface at `http://localhost:8082`
+- Content Repo: You should see a Swagger API interface at `http://localhost:8081`
 
 ## Ingesting an article
 

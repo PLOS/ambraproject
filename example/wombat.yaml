@@ -1,5 +1,5 @@
 
-server: http://localhost:8123/
+server: http://localhost:8082/
 # URL of the server for the service API ("Rhino")
 
 themeSources:
