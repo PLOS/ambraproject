@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Themes Quickstart
+title: Themes Guide
 navigation_weight: 4
 
 ---
@@ -8,7 +8,7 @@ navigation_weight: 4
 
 ## Setting up a theme directory
 
-Following the Quickstart Guide you will have created a directory at the path `$HOME/ambra/themes`. It contains:
+Following the Getting Started Guide you will have created a directory at the path `$HOME/ambra/themes`. It contains:
 
 * a file named `sites.yaml`, which describes the publication sites to be hosted by your server (just one to start); and
 * a directory named `main/`, which is the theme for your one site.

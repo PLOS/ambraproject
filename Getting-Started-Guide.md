@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Quickstart Guide
+title: Getting Started Guide
 navigation_weight: 2
 
 
@@ -8,9 +8,9 @@ navigation_weight: 2
 
 # Introduction
 
-This Quickstart guide provides instructions for setting up a new instance of the Ambra stack.
+This guide provides basic instructions for setting up a new instance of the Ambra stack.
 
-These instructions are targeted at Linux and iOS systems. We have not tried to install it in Windows environments.
+These instructions are targeted at Linux and MacOS systems. It has not been tested in Windows environments.
 
 
 # Table of Contents:
@@ -51,15 +51,15 @@ You can check out the source code and run the applications with Tomcat and Maven
 * [Rhino](https://github.com/PLOS/rhino.git)
 * [Content Repo](https://github.com/PLOS/content-repo.git)
 
-### Alternative: Download the latest releases
+### Alternative: Download the compiled releases
 
-You can deploy Ambra in Tomcat without compiling the source code.  Download latest releases:
+You can deploy Ambra in Tomcat without compiling the source code. Download the releases here:
 - [Wombat](https://plos.github.io/ambraproject/Releases.html#wombat)
 - [Rhino](https://plos.github.io/ambraproject/Releases.html#rhino)
 - [Content Repo](https://plos.github.io/ambraproject/Releases.html#content-repo)
 
-### Alternative: Docker
-[See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start).  You can quickly bring up an auto-configured Ambra stack using Docker instead of having to follow this quickstart guide.
+### Alternative: Docker Quickstart
+[See our Docker setup guide](https://github.com/PLOS/Dockerfiles/wiki/Ambra-Quick-Start) to quickly bring up an auto-configured Ambra stack.
 
 # System setup
 
@@ -100,7 +100,7 @@ Add a journal to the database:
 INSERT INTO journal (`journalKey`, `title`, `eissn`) VALUES ("my_journal", "My Journal", "0000-0000");
 ```
 
-* `journalKey` - an identifier used in config files. A theme is set for a journal by setting `journalKey` in `journal.yaml`. For more on themes see the [Themes Quickstart](themes-customizing.html).
+* `journalKey` - an identifier used in config files. A theme is set for a journal by setting `journalKey` in `journal.yaml`. For more on themes see the [Themes Guide](themes-customizing.html).
 * `title` - the journal title
 * `eissn` - the journal's [electronic ISSN (e-ISSN)](http://www.issn.org/). Articles identify the journal to which they are added by e-ISSN (see the [Ingestible Package Guide](https://plos.github.io/ambraproject/Ingestible-Package-Guide.html) for details). For the sample database we will use a dummy value: `0000-0000`.
 
@@ -169,7 +169,7 @@ cd $HOME
 pwd # This prints the path to your home directory. Edit the file /etc/ambra/wombat.yaml and replace $HOME with this path.  
 ```
 
-For more on themes see the [Themes Quickstart](themes-customizing.html) and [Working with PLOS's Themes ](themes-documenation.html).
+For more on themes see the [Themes Guide](themes-customizing.html) and [Working with PLOS's Themes ](themes-documenation.html).
 
 # Running the Application
 ## Running the application from source code with Maven
@@ -180,7 +180,7 @@ Use Maven to run the applications from source. For each respective app you must 
 - Rhino: `mvn tomcat6:run -Dmaven.tomcat.port=8082 -Drhino.configDir=/etc/ambra`
 - Content Repo: `mvn tomcat6:run -Dmaven.tomcat.port=8081`
 
-### Alternative: Deploying the latest release to Tomcat
+### Alternative: Deploying a compiled release to Tomcat
 You should be familiar with how to deploy a webapp to Tomcat. Typically, `.war` files are simply copied into Tomcat's `webapps` directory and Tomcat will start the webapp automatically.
 
 ## Confirming that the application is running

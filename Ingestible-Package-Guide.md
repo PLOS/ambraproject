@@ -8,7 +8,7 @@ navigation_weight: 3
 # Introduction
 
 This guide will walk you through creating, ingesting, and publishing an article package in Ambra.
-For instructions for setting up the Ambra stack, please see the Quickstart Guide.
+For instructions for setting up the Ambra stack, please see the Getting Started Guide.
 
 # Table of Contents:
 
