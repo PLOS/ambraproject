@@ -11,11 +11,11 @@ want to contribute or debug it. (It is not necessary to read this document if
 you only want to use or administer the system.)
 
 The Ambra stack consists of several service-oriented components. You should
-follow the [Quickstart Guide][quickstart], both to set up your development
+follow the [Getting Started Guide][gettingstarted], both to set up your development
 system and to give yourself some rough familiarity with what the components are
 and what each one does.
 
-  [quickstart]: Quickstart-Guide.html
+  [gettingstarted]: Getting-Started-Guide.html
 
 Wombat
 ======
@@ -44,7 +44,7 @@ mobile-friendly site.
 Each site is mapped to a single **theme**, which is a directory of files that
 provide the configuration and front-end code that the site will use. Themes
 reuse each other's code and content through an inheritance mechanism. An
-overview of theme inheritance is provided in the [Quickstart Guide][quickstart]
+overview of theme inheritance is provided in the [Getting Started Guide][gettingstarted]
 and on the "[Working with PLOS's Themes][plosthemes]" page.
 
   [plosthemes]: themes-documentation.html
