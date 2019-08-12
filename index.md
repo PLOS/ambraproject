@@ -6,12 +6,13 @@ title: Welcome to Ambra
 
 ## What is Ambra?
 
-Ambra is an innovative Open Source platform for publishing [Open Access][oa]
-research articles. It provides features for post-publication discussion and
-versioned articles that allows for a "living" document around which further
-scientific discoveries can be made. The platform is in active development by
-[PLOS (Public Library of Science)][plos] and is licensed under the [MIT
-License][mit].
+Ambra is an Open Source platform for publishing [Open Access][oa] research articles. It provides features for post-publication discussion and versioned articles that allows for a “living” document around which further scientific discoveries can be made. It is licensed under the MIT License.
+
+## What is the status of Ambra?
+
+PLOS (Public Library of Science) no longer actively develops Ambra, but maintains it as its operating platform for the full catalog of PLOS journals:
+ 
+With PLOS focus moving away from Ambra, the platform itself is not likely to be the ideal starting point for a new journal or publishing system. However, it remains viable, and its purposeful design toward solving open access scholarly communication problems may serve as a point of inspiration for future platforms.
 
   [oa]:   https://www.plos.org/open-access
   [plos]: http://www.plos.org/
@@ -29,15 +30,6 @@ Ambra is currently used for by the following journals and publishing platforms:
 * [_PLOS Genetics_](http://journals.plos.org/plosgenetics/)
 * [_PLOS Neglected Tropical Diseases_](http://journals.plos.org/plosntds/)
 * [PLOS Collections](http://collections.plos.org/)
-
-## How do I get started?
-
-We have provided Ambra web archive (WAR) files [here][releases] that can be
-deployed and evaluated on a web server. Check out the [User
-Documentation][docs] to get started.
-
-  [releases]: Releases.html
-  [docs]:     Docs-Home.html
 
 ## How do I give feedback?
 
